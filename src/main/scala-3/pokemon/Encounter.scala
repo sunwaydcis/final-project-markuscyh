@@ -14,9 +14,9 @@ case class Encounter() :
       encounterGrade4()
     else if (grade <= 309) then
       encounterGrade5()
-    else 
-      encounterGrade6()  
-    end if  
+    else
+      encounterGrade6()
+    end if
   end randomGrade
 
   def encounterGrade1() : String =
@@ -87,5 +87,5 @@ case class Encounter() :
     var rate = Random.nextInt(1) + 1
     rate match
       case 1 => "Arceus"
-    end match  
+    end match
 end Encounter

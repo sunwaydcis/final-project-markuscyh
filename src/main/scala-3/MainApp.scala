@@ -30,7 +30,7 @@ object MainApp extends JFXApp3:
   var encounterrate = new Encounter()
   var e = encounterrate.randomGrade()
   println(e)
-  var pokemon = new UserPokemon("Caterpie")
+  var pokemon = new UserPokemon(e)
   println(pokemon.name())
-
+  println(pokemon.grade())
 end MainApp
