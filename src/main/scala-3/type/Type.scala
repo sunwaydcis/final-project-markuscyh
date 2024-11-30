@@ -1,4 +1,4 @@
-
+package `type`
 abstract class Type() :
   var effective : List[String]
   var ineffective : List[String]

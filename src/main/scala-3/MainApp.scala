@@ -1,5 +1,6 @@
 package ch.makery.address
-
+import `type`.Type
+import pokemon.*
 import javafx.fxml.FXMLLoader
 import scalafx.scene as sfxs
 import javafx.scene as jfxs
@@ -25,5 +26,11 @@ object MainApp extends JFXApp3:
         root = roots.get
 
 
+  //Testing encounters
+  var encounterrate = new Encounter()
+  var e = encounterrate.randomGrade()
+  println(e)
+  var pokemon = new UserPokemon("Caterpie")
+  println(pokemon.name())
 
 end MainApp
