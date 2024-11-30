@@ -25,6 +25,14 @@ object MainApp extends JFXApp3:
       scene = new Scene():
         root = roots.get
 
+    showOpeningScene()
+
+    def showOpeningScene() : Unit =
+      val resource = getClass.getResource("view/OpeningScene.fxml")
+      val loader = new FXMLLoader(resource)
+      loader.load()
+      val roots = loader.getRoot[jfxs.layout.AnchorPane]
+      this.roots.get.center = roots
 
   //Testing encounters
   var encounterrate = new Encounter()

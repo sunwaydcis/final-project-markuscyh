@@ -68,11 +68,11 @@ abstract class Pokemon(_name : String):
     case Tyranitar extends PokemonDescription( "Tyranitar",  4, 160,  125, 103, 87,  87,  59,  "Rock",   "Dark")
 
     //Grade 5 Pokemon
-    case Hooh extends PokemonDescription(    "HoOh",     5, 312,  200, 156, 178, 226, 256, "Fire",   "Flying")
-    case Lugia extends PokemonDescription(   "Lugia",    5, 213,  156, 200, 156, 226, 178, "Psychic","Flying")
+    case Hooh extends PokemonDescription(      "HoOh",       5, 312,  200, 156, 178, 226, 256, "Fire",   "Flying")
+    case Lugia extends PokemonDescription(     "Lugia",      5, 213,  156, 200, 156, 226, 178, "Psychic","Flying")
 
     //Grade 6 Pokemon
-    case Arceus extends PokemonDescription(  "Arceus",   6, 444,  372, 372, 372, 372, 372, "Normal", null)
+    case Arceus extends PokemonDescription(    "Arceus",     6, 444,  372, 372, 372, 372, 372, "Normal", null)
 
     def grade() : Int =
       _grade
