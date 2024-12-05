@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.StartScreen">
+   <children>
+      <ImageView fitHeight="175.0" fitWidth="408.0" layoutX="146.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/Pokemon_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/Ole-Ga_logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="125.0" layoutY="467.0" prefHeight="18.0" prefWidth="450.0" text="Pokemon belongs to Nintendo and GameFreak. I do not own the rights to Pokemon" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

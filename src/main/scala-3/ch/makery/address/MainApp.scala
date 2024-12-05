@@ -1,14 +1,12 @@
 package ch.makery.address
-import `type`.Type
-import pokemon.*
 import javafx.fxml.FXMLLoader
-import scalafx.scene as sfxs
 import javafx.scene as jfxs
+import pokemon.*
 import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
+import scalafx.scene as sfxs
 import scalafx.scene.Scene
-import scala.util.Random
 
 object MainApp extends JFXApp3:
 
@@ -36,9 +34,10 @@ object MainApp extends JFXApp3:
 
   //Testing encounters
   var encounterrate = new Encounter()
-  var e = encounterrate.randomGrade()
-  println(e)
-  var pokemon = new UserPokemon(e)
-  println(pokemon.name())
-  println(pokemon.grade())
+  var encounter1 = encounterrate.randomGrade()
+  var encounter2 = encounterrate.randomGrade()
+  var encounter3 = encounterrate.randomGrade()
+  println(encounter1)
+  println(encounter2)
+  println(encounter3)
 end MainApp
