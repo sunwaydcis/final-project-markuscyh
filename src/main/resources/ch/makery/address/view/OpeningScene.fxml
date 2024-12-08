@@ -22,7 +22,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="655.0" text="It is a beautiful day. The birds are singing and the sun is shining. The good weather and atmosphere of the day prompted you to go on a walk in the forest just out of town" textAlignment="JUSTIFY" wrapText="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                  <Label fx:id="storyLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="655.0" text="It is a beautiful day. The birds are singing and the sun is shining. The good weather and atmosphere of the day prompted you to go on a walk in the forest just out of town" textAlignment="JUSTIFY" wrapText="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font name="Times New Roman" size="18.0" />
                      </font>

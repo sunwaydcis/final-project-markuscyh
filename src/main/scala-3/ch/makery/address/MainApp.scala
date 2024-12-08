@@ -23,14 +23,31 @@ object MainApp extends JFXApp3:
       scene = new Scene():
         root = roots.get
 
-    showOpeningScene()
+    showStartScreen()
 
-    def showOpeningScene() : Unit =
-      val resource = getClass.getResource("view/OpeningScene.fxml")
-      val loader = new FXMLLoader(resource)
-      loader.load()
-      val roots = loader.getRoot[jfxs.layout.AnchorPane]
-      this.roots.get.center = roots
+  def showStartScreen(): Unit =
+    val resource = getClass.getResource("view/StartScreen.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+
+  def showOpeningScene(): Unit =
+    val resource = getClass.getResource("view/OpeningScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showOpeningScene
+  
+  def showTutorialScene(): Unit =
+    val resource = getClass.getResource("view/TutorialScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showTutorialScene
+      
 
   //Testing encounters
   var encounterrate = new Encounter()
