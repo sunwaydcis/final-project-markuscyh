@@ -5,7 +5,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.StartScreenController">
    <children>
       <Button layoutX="269.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleStartGame" styleClass="background_button" text="Start Game">
@@ -18,7 +17,7 @@
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="52.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When there is dialogue, click anywhere to progress." wrappingWidth="564.1328125" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="0.0" />
+      <Text layoutX="52.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When there is dialogue, click the arrow button to progress." wrappingWidth="564.1328125" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="0.0" />
       <Text layoutX="52.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When buttons are present, click them to perform an action." wrappingWidth="564.1328125" />
       <Text layoutX="52.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When you encounter the three wild pokemon, click the corrseponding button of the pokemon you want to catch and use against the other two Pokemon" wrappingWidth="564.1328125" />
       <Text layoutX="52.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="After catching your first Pokemon, you will be given a choice between two other Pokemon that you already have. The Pokemon that wasn't picked will not be on the enemy team or your team" textAlignment="JUSTIFY" wrappingWidth="564.1328125" />

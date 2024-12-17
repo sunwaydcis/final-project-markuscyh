@@ -1,4 +1,5 @@
 package ch.makery.address
+
 import javafx.fxml.FXMLLoader
 import javafx.scene as jfxs
 import pokemon.*
@@ -47,14 +48,13 @@ object MainApp extends JFXApp3:
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
   end showTutorialScene
-      
-
+  
   //Testing encounters
   var encounterrate = new Encounter()
   var encounter1 = encounterrate.randomGrade()
   var encounter2 = encounterrate.randomGrade()
   var encounter3 = encounterrate.randomGrade()
-  println(encounter1)
-  println(encounter2)
-  println(encounter3)
+  
+  
+  
 end MainApp
