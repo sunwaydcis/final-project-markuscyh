@@ -29,10 +29,9 @@ class OpeningSceneController():
   var pokemonEncounter2: EnemyPokemon = new EnemyPokemon(MainApp.encounter2)
   var pokemonEncounter3: EnemyPokemon = new EnemyPokemon(MainApp.encounter3)
 
-  val pokemonPortrait1: String = "/images/front_portrait/pidgeot_front.png"
-  val pokemonPortrait2: String = "/images/front_portrait/dartrix_front.png"
-  val pokemonPortrait3: String = "/images/front_portrait/sunflora_front.png"
-
+  val pokemonPortrait1: String = "/images/front_portrait/" + pokemonEncounter1.frontportrait()
+  val pokemonPortrait2: String = "/images/front_portrait/" + pokemonEncounter2.frontportrait()
+  val pokemonPortrait3: String = "/images/front_portrait/" + pokemonEncounter3.frontportrait()
 
   val image1: Image = new Image(getClass.getResourceAsStream(pokemonPortrait1))
   val image2: Image = new Image(getClass.getResourceAsStream(pokemonPortrait2))
@@ -54,8 +53,7 @@ class OpeningSceneController():
 
 
   def initialize() =
-    var pokemon_portrait1 = "caterpie_front.png"
-    val image1: Image = new Image(getClass.getResourceAsStream("/images/front_portrait/caterpie_front.png"))
+
     storyLabel.text = storyList(count)
 
 
@@ -63,7 +61,7 @@ class OpeningSceneController():
     count = 1 + count
     storyLabel.text = storyList(count)
 
-    if (count == 4) {
+    if (count == 3) {
       firstImage.image = image1
       secondImage.image = image2
       thirdImage.image = image3
