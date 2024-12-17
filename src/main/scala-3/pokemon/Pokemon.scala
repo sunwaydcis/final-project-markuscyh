@@ -74,8 +74,8 @@ abstract class Pokemon(_name : String):
     case Tyranitar extends PokemonDescription( "Tyranitar",  4, 160,  125, 103, 87,  87,  59,  "Rock",   "Dark",      "tyranitar_front.png",  "tyranitar_back.png")
 
     //Grade 5 Pokemon
-    case HoOh extends PokemonDescription(      "HoOh",       5, 312,  200, 156, 178, 226, 256, "Fire",   "Flying",    "ho-oh_back.png",       "ho-oh_back.png")
-    case Lugia extends PokemonDescription(     "Lugia",      5, 213,  156, 200, 156, 226, 178, "Psychic","Flying",    "lugia_back.png",       "lugia_back.png")
+    case HoOh extends PokemonDescription(      "HoOh",       5, 312,  200, 156, 178, 226, 256, "Fire",   "Flying",    "ho-oh_front.png",       "ho-oh_back.png")
+    case Lugia extends PokemonDescription(     "Lugia",      5, 213,  156, 200, 156, 226, 178, "Psychic","Flying",    "lugia_front.png",       "lugia_back.png")
 
     //Grade 6 Pokemon
     case Arceus extends PokemonDescription(    "Arceus",     6, 444,  372, 372, 372, 372, 372, "Normal", null,        "arceus_front.png",     "arceus_back.png")

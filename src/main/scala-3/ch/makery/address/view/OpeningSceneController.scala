@@ -29,6 +29,7 @@ class OpeningSceneController():
   var pokemonEncounter2: EnemyPokemon = new EnemyPokemon(MainApp.encounter2)
   var pokemonEncounter3: EnemyPokemon = new EnemyPokemon(MainApp.encounter3)
 
+  //Sets the image for the Pokemon
   val pokemonPortrait1: String = "/images/front_portrait/" + pokemonEncounter1.frontportrait()
   val pokemonPortrait2: String = "/images/front_portrait/" + pokemonEncounter2.frontportrait()
   val pokemonPortrait3: String = "/images/front_portrait/" + pokemonEncounter3.frontportrait()
@@ -46,9 +47,11 @@ class OpeningSceneController():
   val storyDialogue2: String = "All seems to be going well, when all of a sudden you spot some ruffling in the bushes."
   val storyDialogue3: String = "You step forward to take a closer look when all of a sudden -"
   val storyDialogue4: String = "Three wild Pokemon appeared!"
-  val storyDialogue5: String = "It is a " + pokemonEncounter1.name() + ", " + pokemonEncounter2.name() + " and " + pokemonEncounter3.name()
+  val storyDialogue5: String = "It is a " + pokemonEncounter1.name() + ", a " + pokemonEncounter2.name() + " and a " + pokemonEncounter3.name()
+  val storyDialogue6: String = "The three Pokemon are Pokemon that you were planning to add to your team, however you only have a single Masterball on you right now. You are certain that no matter which of the three you catch, the other two will attack you. "
+  val storyDialogue7: String = "Which of the three Pokemon will you catch?"
 
-  val storyList = List(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5)
+  val storyList = List(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7)
 
 
 
