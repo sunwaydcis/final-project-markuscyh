@@ -63,8 +63,8 @@ object MainApp extends JFXApp3:
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
-  end showBattleScene(): Unit =
-
+  end showBattleScene
+  
   def setEnemyPokemon(enemy1: String, enemy2: String, user1: String): Unit =
     enemyPokemon1 = new EnemyPokemon(enemy1)
     enemyPokemon2 = new EnemyPokemon(enemy2)
