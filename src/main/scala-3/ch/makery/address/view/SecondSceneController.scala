@@ -72,7 +72,7 @@ class SecondSceneController():
     end if
 
     if (count == 6) then
-
+      showBattleScene()
     end if
 
   def selectFirst(action: ActionEvent): Unit =
