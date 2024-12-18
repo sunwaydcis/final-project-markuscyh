@@ -49,12 +49,52 @@ object MainApp extends JFXApp3:
     this.roots.get.center = roots
   end showTutorialScene
 
+  def showSecondScene(): Unit =
+    val resource = getClass.getResource("view/SecondScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showSecondScene
+
+  def showBattleScene(): Unit =
+    val resource = getClass.getResource("view/BattleScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showBattleScene(): Unit =
+
+  def setEnemyPokemon(enemy1: String, enemy2: String, user1: String): Unit =
+    enemyPokemon1 = new EnemyPokemon(enemy1)
+    enemyPokemon2 = new EnemyPokemon(enemy2)
+    userPokemon1 = new UserPokemon(user1)
+
+    //test if pokemon are set
+    println(enemyPokemon1.name())
+    println(enemyPokemon2.name())
+    println(userPokemon1.name())
+  end setEnemyPokemon
+
+  def setUserPokemon(user2: String): Unit =
+    userPokemon2 = new UserPokemon(user2)
+    println(userPokemon2.name())
+  end setUserPokemon
+
   //Testing encounters
   var encounterrate = new Encounter()
   var encounter1 = encounterrate.randomGrade()
   var encounter2 = encounterrate.randomGrade()
   var encounter3 = encounterrate.randomGrade()
+  var encounter4 = encounterrate.randomGrade()
+  var encounter5 = encounterrate.randomGrade()
 
+  var enemyPokemon1: EnemyPokemon = null
+  var enemyPokemon2: EnemyPokemon = null
+  var userPokemon1: UserPokemon = null
+  var userPokemon2: UserPokemon = null
+
+  //test if encounters occue
   println(encounter1)
   println(encounter2)
   println(encounter3)

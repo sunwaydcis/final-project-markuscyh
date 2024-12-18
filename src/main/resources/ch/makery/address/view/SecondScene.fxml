@@ -8,20 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.OpeningSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.SecondSceneController">
    <children>
       <SplitPane dividerPositions="0.7008032128514057" layoutX="238.0" layoutY="128.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="698.0">
                <children>
                   <ImageView fitHeight="346.0" fitWidth="896.0" layoutX="3.0" onMouseClicked="#handleNextDialogue" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@../../../../images/Forest_background.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="firstImage" fitHeight="200.0" fitWidth="200.0" layoutX="49.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="49.0" />
-                  <ImageView fx:id="secondImage" fitHeight="200.0" fitWidth="200.0" layoutX="242.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="thirdImage" fitHeight="200.0" fitWidth="200.0" layoutX="472.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="49.0" />
+                  <ImageView fx:id="firstImage" fitHeight="200.0" fitWidth="200.0" layoutX="111.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="90.0" />
+                  <ImageView fx:id="secondImage" fitHeight="200.0" fitWidth="200.0" layoutX="409.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#handleNextDialogue" prefHeight="100.0" prefWidth="160.0">
@@ -36,9 +35,8 @@
                         <Font name="Times New Roman" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="thirdSelect" layoutX="310.0" layoutY="60.0" mnemonicParsing="false" onAction="#catchThird" prefHeight="26.0" prefWidth="78.0" text="3" visible="false" AnchorPane.rightAnchor="158.0" />
-                  <Button fx:id="secondSelect" layoutX="310.0" layoutY="60.0" mnemonicParsing="false" onAction="#catchSecond" prefHeight="26.0" prefWidth="78.0" text="2" visible="false" AnchorPane.rightAnchor="310.0" />
-                  <Button fx:id="firstSelect" layoutX="158.0" layoutY="60.0" mnemonicParsing="false" onAction="#catchFirst" prefHeight="26.0" prefWidth="78.0" text="1" visible="false" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="60.0" />
+                  <Button fx:id="secondSelect" layoutX="447.0" layoutY="60.0" mnemonicParsing="false" onAction="#selectSecond" prefHeight="26.0" prefWidth="78.0" text="2" visible="false" AnchorPane.rightAnchor="200.0" />
+                  <Button fx:id="firstSelect" layoutX="158.0" layoutY="60.0" mnemonicParsing="false" onAction="#selectFirst" prefHeight="26.0" prefWidth="78.0" text="1" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="60.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

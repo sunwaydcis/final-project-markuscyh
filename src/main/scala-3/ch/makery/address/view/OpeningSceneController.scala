@@ -2,14 +2,14 @@ package ch.makery.address.view
 
 import pokemon.*
 import ch.makery.address.MainApp
+import ch.makery.address.MainApp.*
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.Label
 import scalafx.Includes.*
-import javafx.scene.image.ImageView //Need to use JavaFX because cannot convert scalafx ImageView to javafx ImageView
+import javafx.scene.image.ImageView
 import javafx.scene.image.Image
-
-import scala.io.Source
+import javafx.scene.control.Button
 
 
 @FXML
@@ -23,8 +23,17 @@ class OpeningSceneController():
   protected var secondImage: ImageView = null
   @FXML
   protected var thirdImage: ImageView = null
+  @FXML
+  protected var nextButton: Button = null
+  @FXML
+  protected var firstSelect: Button = new Button()
+  @FXML
+  protected var secondSelect: Button = new Button()
+  @FXML
+  protected var thirdSelect: Button = new Button()
 
 
+  //Allows for the retrieval of necessary Pokemon Information
   var pokemonEncounter1: EnemyPokemon = new EnemyPokemon(MainApp.encounter1)
   var pokemonEncounter2: EnemyPokemon = new EnemyPokemon(MainApp.encounter2)
   var pokemonEncounter3: EnemyPokemon = new EnemyPokemon(MainApp.encounter3)
@@ -56,7 +65,6 @@ class OpeningSceneController():
 
 
   def initialize() =
-
     storyLabel.text = storyList(count)
 
 
@@ -64,9 +72,35 @@ class OpeningSceneController():
     count = 1 + count
     storyLabel.text = storyList(count)
 
-    if (count == 3) {
+    if (count == 3) then
       firstImage.image = image1
       secondImage.image = image2
       thirdImage.image = image3
-    }
+    end if
+    
+    if (count == 6) then
+      //Reveals buttons
+      firstSelect.visible = true
+      secondSelect.visible = true
+      thirdSelect.visible = true
 
+      //Sets the text for the buttons
+      firstSelect.text = pokemonEncounter1.name()
+      secondSelect.text = pokemonEncounter2.name()
+      thirdSelect.text = pokemonEncounter3.name()
+
+      //Hides Next Button
+      nextButton.visible = false
+    end if
+
+  def catchFirst(action: ActionEvent): Unit =
+    setEnemyPokemon(pokemonEncounter2.name(), pokemonEncounter3.name(), pokemonEncounter1.name())
+    showSecondScene()
+    
+  def catchSecond(action: ActionEvent): Unit =
+    setEnemyPokemon(pokemonEncounter1.name(), pokemonEncounter3.name(), pokemonEncounter2.name())
+    showSecondScene()
+    
+  def catchThird(action: ActionEvent): Unit =
+    setEnemyPokemon(pokemonEncounter1.name(), pokemonEncounter2.name(), pokemonEncounter3.name())
+    showSecondScene()
