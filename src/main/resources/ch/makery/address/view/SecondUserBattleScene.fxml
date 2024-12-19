@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.BattleSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.SecondUserBattleSceneController">
    <children>
       <SplitPane dividerPositions="0.7008032128514057" layoutX="238.0" layoutY="128.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -50,10 +50,10 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="450.0">
                            <children>
-                              <Label fx:id="storyLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="129.0" prefWidth="430.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-                              <Button fx:id="observeButton" layoutX="249.0" layoutY="68.0" mnemonicParsing="false" onAction="#observeAction" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
+                              <Label fx:id="storyLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="129.0" prefWidth="430.0" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                              <Button fx:id="observeButton" layoutX="249.0" layoutY="68.0" mnemonicParsing="false" onAction="#observeAction" prefHeight="34.0" prefWidth="64.0" text="Observe" />
                               <Button fx:id="moveButton1" layoutX="148.0" layoutY="42.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Move 1" visible="false" AnchorPane.rightAnchor="248.0" />
-                              <Button fx:id="attackButton" layoutX="148.0" layoutY="68.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Attack" visible="false" AnchorPane.leftAnchor="148.0" />
+                              <Button fx:id="attackButton" layoutX="148.0" layoutY="68.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Attack" AnchorPane.leftAnchor="148.0" />
                               <Button fx:id="moveButton2" layoutX="249.0" layoutY="42.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Move 2" visible="false" />
                               <Button fx:id="targetButton1" layoutX="148.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Target 1" visible="false" />
                               <Button fx:id="targetButton2" layoutX="249.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Target 2" visible="false" />
@@ -63,7 +63,6 @@
                                     <Font name="Times New Roman" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="startButton" layoutX="191.0" layoutY="72.0" mnemonicParsing="false" onAction="#startBattle" text="Battle Start!" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="191.0" />
                            </children>
                         </AnchorPane>
                     </items>

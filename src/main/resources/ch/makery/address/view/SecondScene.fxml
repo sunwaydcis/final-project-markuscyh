@@ -37,6 +37,7 @@
                   </Button>
                   <Button fx:id="secondSelect" layoutX="447.0" layoutY="60.0" mnemonicParsing="false" onAction="#selectSecond" prefHeight="26.0" prefWidth="78.0" text="2" visible="false" AnchorPane.rightAnchor="200.0" />
                   <Button fx:id="firstSelect" layoutX="158.0" layoutY="60.0" mnemonicParsing="false" onAction="#selectFirst" prefHeight="26.0" prefWidth="78.0" text="1" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="60.0" />
+                  <Button fx:id="startButton" layoutX="312.0" layoutY="60.0" mnemonicParsing="false" onAction="#startBattle" text="Battle Start" visible="false" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="312.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

@@ -13,7 +13,7 @@ import javafx.scene.control.Button
 import javafx.scene.control.ProgressBar
 
 @FXML
-class BattleSceneController():
+class SecondUserBattleSceneController():
 
   //Label for battle dialogue
   @FXML
@@ -46,10 +46,6 @@ class BattleSceneController():
   protected var userHealth1: ProgressBar = null
   @FXML
   protected var userHealth2: ProgressBar = null
-
-  //Start Battle Button
-  @FXML
-  protected var startButton: Button = null
 
   //Attack, Observe and Back Button
   @FXML
@@ -96,9 +92,6 @@ class BattleSceneController():
   val userPortrait1: Image = new Image(getClass.getResourceAsStream(userURL1))
   val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
 
-  //Set an action boolean
-  var userAction: Boolean = false
-
   def initialize(): Unit =
     enemyImage1.image = enemyPortrait1
     enemyImage2.image = enemyPortrait2
@@ -110,68 +103,12 @@ class BattleSceneController():
     userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp() + "/" + MainApp.userPokemon1.hp()
     userName2.text = MainApp.userPokemon2.name() + ": " + MainApp.userPokemon2.current_hp() + "/" + MainApp.userPokemon2.hp()
 
-    enemyHealth1.progress = 1f
-    enemyHealth2.progress = 1f
-    userHealth1.progress = 1f
-    userHealth2.progress = 1f
-
-    storyLabel.text = "The" + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack!"
-
-  def startBattle(action: ActionEvent): Unit =
-    startButton.visible = false
-    battle()
-
-  def battle(): Unit =
-    while true do
-      MainApp.userPokemon1.turnCounterProgress()
-      MainApp.userPokemon2.turnCounterProgress()
-      MainApp.enemyPokemon1.turnCounterProgress()
-      MainApp.enemyPokemon2.turnCounterProgress()
-
-      println("running")
-
-      if MainApp.userPokemon1.turn_counter() == 0 then
-        MainApp.userPokemon1.turnCounterReset()
-
-        attackButton.visible = true
-        observeButton.visible = true
-        
-        while !userAction do
-          null
-        end while
-        
-        userAction = true
-
-      end if
+    enemyHealth1.progress = MainApp.enemyPokemon1.current_hp() / MainApp.enemyPokemon1.hp()
+    enemyHealth2.progress = MainApp.enemyPokemon2.current_hp() / MainApp.enemyPokemon2.hp()
+    userHealth1.progress = MainApp.userPokemon1.current_hp() / MainApp.userPokemon1.hp()
+    userHealth2.progress = MainApp.userPokemon2.current_hp() / MainApp.userPokemon2.hp()
 
 
-
-      if MainApp.userPokemon2.turn_counter() == 0 then
-        MainApp.userPokemon2.turnCounterReset()
-
-        attackButton.visible = true
-        observeButton.visible = true
-        
-        while !userAction do
-          null
-        end while
-
-      end if
-
-
-
-      if MainApp.enemyPokemon1.turn_counter() == 0 then
-        MainApp.enemyPokemon1.turnCounterReset()
-        println("enemy 1")
-      end if
-
-
-
-      if MainApp.enemyPokemon2.turn_counter() == 0 then
-        MainApp.enemyPokemon2.turnCounterReset()
-        println("enemy 2")
-      end if
-    end while
 
   def observeAction(action: ActionEvent): Unit =
     attackButton.visible = false
@@ -220,4 +157,3 @@ class BattleSceneController():
 
   def handleNextDialogue(action: ActionEvent): Unit =
     nextButton.visible = false
-    userAction = true

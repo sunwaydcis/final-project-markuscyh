@@ -57,13 +57,21 @@ object MainApp extends JFXApp3:
     this.roots.get.center = roots
   end showSecondScene
 
-  def showBattleScene(): Unit =
-    val resource = getClass.getResource("view/BattleScene.fxml")
+  def showFirstUserBattleScene(): Unit =
+    val resource = getClass.getResource("view/FirstUserBattleScene.fxml")
     val loader = new FXMLLoader(resource)
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
-  end showBattleScene
+  end showFirstUserBattleScene
+
+  def showSecondUserBattleScene(): Unit =
+    val resource = getClass.getResource("view/SecondUserBattleScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showSecondUserBattleScene
   
   def setEnemyPokemon(enemy1: String, enemy2: String, user1: String): Unit =
     enemyPokemon1 = new EnemyPokemon(enemy1)
@@ -80,6 +88,41 @@ object MainApp extends JFXApp3:
     userPokemon2 = new UserPokemon(user2)
     println(userPokemon2.name())
   end setUserPokemon
+
+  def battle(): Unit =
+    var userAction: Boolean = false
+    while !userAction do
+      MainApp.userPokemon1.turnCounterProgress()
+      MainApp.userPokemon2.turnCounterProgress()
+      MainApp.enemyPokemon1.turnCounterProgress()
+      MainApp.enemyPokemon2.turnCounterProgress()
+
+      if MainApp.userPokemon1.turn_counter() == 0 then
+        MainApp.userPokemon1.turnCounterReset()
+        
+        showFirstUserBattleScene()
+
+        userAction = true
+        
+      else if MainApp.userPokemon2.turn_counter() <= 0 then
+        MainApp.userPokemon2.turnCounterReset()
+
+        showSecondUserBattleScene()
+
+        userAction = true
+
+      else if MainApp.enemyPokemon1.turn_counter() <= 0 then
+        MainApp.enemyPokemon1.turnCounterReset()
+
+        userAction = true
+        
+      else if MainApp.enemyPokemon2.turn_counter() <= 0 then
+        MainApp.enemyPokemon2.turnCounterReset()
+
+        userAction = true
+      end if
+      
+    end while
 
   //Testing encounters
   var encounterrate = new Encounter()

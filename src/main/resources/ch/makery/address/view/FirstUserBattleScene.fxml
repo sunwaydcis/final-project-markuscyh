@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.FirstUserBattleSceneController">
+   <children>
+      <SplitPane dividerPositions="0.7008032128514057" layoutX="238.0" layoutY="128.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="698.0">
+               <children>
+                  <ImageView fitHeight="346.0" fitWidth="896.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../../../../images/Forest_background.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="146.0" stroke="WHITE" strokeType="INSIDE" width="239.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="459.0" AnchorPane.topAnchor="0.0" />
+                  <ProgressBar fx:id="enemyHealth1" layoutX="20.0" layoutY="45.0" prefWidth="200.0" progress="0.0" />
+                  <ProgressBar fx:id="enemyHealth2" layoutX="20.0" layoutY="97.0" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="enemyName2" layoutX="20.0" layoutY="79.0" prefHeight="18.0" prefWidth="200.0" text="Label" />
+                  <Label fx:id="enemyName1" layoutX="20.0" layoutY="27.0" prefHeight="18.0" prefWidth="200.0" text="Label" />
+                  <ImageView fx:id="userImage1" fitHeight="150.0" fitWidth="136.0" layoutX="29.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="userImage2" fitHeight="150.0" fitWidth="136.0" layoutX="190.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="enemyImage1" fitHeight="150.0" fitWidth="136.0" layoutX="389.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="enemyImage2" fitHeight="150.0" fitWidth="136.0" layoutX="544.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="userButton1" layoutX="65.0" layoutY="297.0" mnemonicParsing="false" onAction="#observeUser1" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
+                  <Button fx:id="userButton2" layoutX="226.0" layoutY="297.0" mnemonicParsing="false" onAction="#observeUser2" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
+                  <Button fx:id="enemyButton1" layoutX="425.0" layoutY="165.0" mnemonicParsing="false" onAction="#observeEnemy1" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
+                  <Button fx:id="enemyButton2" layoutX="580.0" layoutY="165.0" mnemonicParsing="false" onAction="#observeEnemy2" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.3361079219288174" layoutX="14.0" layoutY="-7.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="268.0">
+                           <children>
+                              <ProgressBar fx:id="userHealth2" layoutX="13.0" layoutY="97.0" prefWidth="200.0" progress="0.0" />
+                              <Label fx:id="userName1" layoutX="14.0" layoutY="25.0" prefHeight="18.0" prefWidth="200.0" text="Label" />
+                              <Label fx:id="userName2" layoutX="14.0" layoutY="79.0" prefHeight="18.0" prefWidth="200.0" text="Label" />
+                              <ProgressBar fx:id="userHealth1" layoutX="13.0" layoutY="43.0" prefWidth="200.0" progress="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="450.0">
+                           <children>
+                              <Label fx:id="storyLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="129.0" prefWidth="430.0" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                              <Button fx:id="observeButton" layoutX="249.0" layoutY="68.0" mnemonicParsing="false" onAction="#observeAction" prefHeight="34.0" prefWidth="64.0" text="Observe" />
+                              <Button fx:id="moveButton1" layoutX="148.0" layoutY="42.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Move 1" visible="false" AnchorPane.rightAnchor="248.0" />
+                              <Button fx:id="attackButton" layoutX="148.0" layoutY="68.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Attack" AnchorPane.leftAnchor="148.0" />
+                              <Button fx:id="moveButton2" layoutX="249.0" layoutY="42.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Move 2" visible="false" />
+                              <Button fx:id="targetButton1" layoutX="148.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Target 1" visible="false" />
+                              <Button fx:id="targetButton2" layoutX="249.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Target 2" visible="false" />
+                              <Button fx:id="backButton" layoutX="344.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="34.0" prefWidth="64.0" text="Back" visible="false" />
+                              <Button fx:id="nextButton" layoutX="422.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleNextDialogue" text="&gt;" visible="false">
+                                 <font>
+                                    <Font name="Times New Roman" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -23,9 +23,11 @@ class SecondSceneController():
   @FXML
   protected var nextButton: Button = null
   @FXML
-  protected var firstSelect: Button = new Button()
+  protected var firstSelect: Button = null
   @FXML
-  protected var secondSelect: Button = new Button()
+  protected var secondSelect: Button = null
+  @FXML
+  protected var startButton: Button = null  
 
 
   // Set Images
@@ -75,7 +77,7 @@ class SecondSceneController():
     if (count == 6) then
       //Hides Next Button
       nextButton.visible = false
-      showBattleScene()
+      startButton.visible = true
     end if
 
   def selectFirst(action: ActionEvent): Unit =
@@ -99,7 +101,10 @@ class SecondSceneController():
     secondSelect.visible = false
 
     storyDialogue6 = "Alright! With " + MainApp.userPokemon2.name() + " and " + MainApp.userPokemon1.name() + ", you will surely be able to beat your opponents!"
-    storyDialogue7 = "The" + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
+    storyDialogue7 = "The " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
     storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7)
     count = 1 + count
     storyLabel.text = storyList(count)
+    
+  def startBattle(action: ActionEvent): Unit =
+    battle()
