@@ -47,6 +47,10 @@ class BattleSceneController():
   @FXML
   protected var userHealth2: ProgressBar = null
 
+  //Start Battle Button
+  @FXML
+  protected var startButton: Button = null
+
   //Attack, Observe and Back Button
   @FXML
   protected var attackButton: Button = null
@@ -54,6 +58,16 @@ class BattleSceneController():
   protected var observeButton: Button = null
   @FXML
   protected var backButton: Button = null
+
+  //Pokemon Observe Buttons
+  @FXML
+  protected var userButton1: Button = null
+  @FXML
+  protected var userButton2: Button = null
+  @FXML
+  protected var enemyButton1: Button = null
+  @FXML
+  protected var enemyButton2: Button = null
 
   //Pokemon Move Buttons
   @FXML
@@ -82,6 +96,9 @@ class BattleSceneController():
   val userPortrait1: Image = new Image(getClass.getResourceAsStream(userURL1))
   val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
 
+  //Set an action boolean
+  var userAction: Boolean = false
+
   def initialize(): Unit =
     enemyImage1.image = enemyPortrait1
     enemyImage2.image = enemyPortrait2
@@ -98,6 +115,11 @@ class BattleSceneController():
     userHealth1.progress = 1f
     userHealth2.progress = 1f
 
+    storyLabel.text = "The" + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack!"
+
+  def startBattle(action: ActionEvent): Unit =
+    startButton.visible = false
+    battle()
 
   def battle(): Unit =
     while true do
@@ -106,35 +128,96 @@ class BattleSceneController():
       MainApp.enemyPokemon1.turnCounterProgress()
       MainApp.enemyPokemon2.turnCounterProgress()
 
+      println("running")
+
       if MainApp.userPokemon1.turn_counter() == 0 then
         MainApp.userPokemon1.turnCounterReset()
 
+        attackButton.visible = true
+        observeButton.visible = true
+        
+        while !userAction do
+          null
+        end while
+        
+        userAction = true
+
       end if
+
+
 
       if MainApp.userPokemon2.turn_counter() == 0 then
         MainApp.userPokemon2.turnCounterReset()
 
+        attackButton.visible = true
+        observeButton.visible = true
+        
+        while !userAction do
+          null
+        end while
+
       end if
+
+
 
       if MainApp.enemyPokemon1.turn_counter() == 0 then
         MainApp.enemyPokemon1.turnCounterReset()
-
+        println("enemy 1")
       end if
+
+
 
       if MainApp.enemyPokemon2.turn_counter() == 0 then
         MainApp.enemyPokemon2.turnCounterReset()
-
+        println("enemy 2")
       end if
     end while
 
+  def observeAction(action: ActionEvent): Unit =
+    attackButton.visible = false
+    observeButton.visible = false
+
+    userButton1.visible = true
+    userButton2.visible = true
+    enemyButton1.visible = true
+    enemyButton2.visible = true
+
   def observeEnemy1(action: ActionEvent): Unit =
     storyLabel.text = MainApp.enemyPokemon1.observation()
+    nextButton.visible = true
+
+    userButton1.visible = false
+    userButton2.visible = false
+    enemyButton1.visible = false
+    enemyButton2.visible = false
 
   def observeEnemy2(action: ActionEvent): Unit =
     storyLabel.text = MainApp.enemyPokemon2.observation()
+    nextButton.visible = true
+
+    userButton1.visible = false
+    userButton2.visible = false
+    enemyButton1.visible = false
+    enemyButton2.visible = false
 
   def observeUser1(action: ActionEvent): Unit =
     storyLabel.text = MainApp.userPokemon1.observation()
+    nextButton.visible = true
+
+    userButton1.visible = false
+    userButton2.visible = false
+    enemyButton1.visible = false
+    enemyButton2.visible = false
 
   def observeUser2(action: ActionEvent): Unit =
     storyLabel.text = MainApp.userPokemon2.observation()
+    nextButton.visible = true
+
+    userButton1.visible = false
+    userButton2.visible = false
+    enemyButton1.visible = false
+    enemyButton2.visible = false
+
+  def handleNextDialogue(action: ActionEvent): Unit =
+    nextButton.visible = false
+    userAction = true
