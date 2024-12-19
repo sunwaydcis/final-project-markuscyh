@@ -43,10 +43,11 @@ class SecondSceneController():
   val storyDialogue3: String = "Your one newly caught Pokemon surely can't defeat them on it's own. Good thing you just so happened to bring your partner Pokemon's Pokeball"
   val storyDialogue4: String = "Your partner will make this an equal battle. However, you struggle to remember who is your partner"
   val storyDialogue5: String = "Who is your partner?"
-  val storyDialogue6: String = "Alright! With " + MainApp.userPokemon2.name() + " and " + MainApp.userPokemon1.name() + ", you will surely be able to beat your opponents!"
-  val storyDialogue7: String = MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
+  var storyDialogue6: String = null
+  var storyDialogue7: String = null
 
-  val storyList = List(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7)
+
+  var storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5)
 
   def initialize() =
     storyLabel.text = storyList(count)
@@ -72,23 +73,33 @@ class SecondSceneController():
     end if
 
     if (count == 6) then
+      //Hides Next Button
+      nextButton.visible = false
       showBattleScene()
     end if
 
   def selectFirst(action: ActionEvent): Unit =
     setUserPokemon(MainApp.encounter4)
-    count = 1 + count
-    storyLabel.text = storyList(count)
 
     nextButton.visible = true
     firstSelect.visible = false
     secondSelect.visible = false
+
+    storyDialogue6 = "Alright! With " + MainApp.userPokemon2.name() + " and " + MainApp.userPokemon1.name() + ", you will surely be able to beat your opponents!"
+    storyDialogue7 = "The" + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
+    storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7)
+    count = 1 + count
+    storyLabel.text = storyList(count)
 
   def selectSecond(action: ActionEvent): Unit =
     setUserPokemon(MainApp.encounter5)
-    count = 1 + count
-    storyLabel.text = storyList(count)
 
     nextButton.visible = true
     firstSelect.visible = false
     secondSelect.visible = false
+
+    storyDialogue6 = "Alright! With " + MainApp.userPokemon2.name() + " and " + MainApp.userPokemon1.name() + ", you will surely be able to beat your opponents!"
+    storyDialogue7 = "The" + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
+    storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7)
+    count = 1 + count
+    storyLabel.text = storyList(count)

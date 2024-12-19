@@ -94,10 +94,5 @@ object MainApp extends JFXApp3:
   var userPokemon1: UserPokemon = null
   var userPokemon2: UserPokemon = null
 
-  //test if encounters occue
-  println(encounter1)
-  println(encounter2)
-  println(encounter3)
-
   
 end MainApp

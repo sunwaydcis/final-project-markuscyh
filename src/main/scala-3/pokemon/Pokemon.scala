@@ -6,11 +6,14 @@ abstract class Pokemon(_name : String):
   // Gets the Pokemon from the enum
   var _grade: Int = PokemonDescription.valueOf(_name).grade()
   var _hp: Double = PokemonDescription.valueOf(_name).hp()
+  var _current_hp: Double = PokemonDescription.valueOf(_name).hp()
   var _attack: Int = PokemonDescription.valueOf(_name).attack()
   var _defense: Int = PokemonDescription.valueOf(_name).defense()
   var _sp_attack: Int = PokemonDescription.valueOf(_name).sp_attack()
   var _sp_defense: Int = PokemonDescription.valueOf(_name).sp_defense()
   var _speed: Int = PokemonDescription.valueOf(_name).speed()
+  var _turn_speed: Int = 500 - _speed
+  var _turn_counter: Int = _turn_speed
   var _type1: String = PokemonDescription.valueOf(_name).type1()
   var _type2: String = PokemonDescription.valueOf(_name).type2()
   var _frontportrait: String = PokemonDescription.valueOf(_name).frontportrait()
@@ -115,6 +118,7 @@ abstract class Pokemon(_name : String):
 
   end PokemonDescription
 
+  // Getters
   def name() : String =
     _name
 
@@ -123,6 +127,9 @@ abstract class Pokemon(_name : String):
 
   def hp(): Double =
     _hp
+
+  def current_hp(): Double =
+    _current_hp
 
   def attack(): Int =
     _attack
@@ -139,6 +146,12 @@ abstract class Pokemon(_name : String):
   def speed(): Int =
     _speed
 
+  def turn_speed(): Int =
+    _turn_speed
+
+  def turn_counter(): Int =
+    _turn_counter
+
   def type1(): String =
     _type1
 
@@ -149,10 +162,20 @@ abstract class Pokemon(_name : String):
     _frontportrait
 
   def backportrait(): String =
-    _backportrait  
+    _backportrait
+  
+  def observation(): String =
+    "The " + _type1 + " " + _type2 + " type " + _name + " has a max health of " + _hp + ", an attack of " + _attack + ", defense of " + _defense +", special attack of " + _sp_attack + ", special defense of " + _sp_defense + " and a speed of " + _speed + "."
 
-  def hpChange(change: Double) : Unit =
-    _hp += change
+  // Setters
+  def hpChange(change: Double): Unit =
+    _current_hp += change
+
+  def turnCounterProgress(): Unit =
+    _turn_counter -= 1
+
+  def turnCounterReset(): Unit =
+    _turn_counter = _turn_speed
 
 end Pokemon
 
