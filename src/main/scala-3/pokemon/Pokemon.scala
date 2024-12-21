@@ -114,7 +114,7 @@ abstract class Pokemon(_name : String):
     var initial_damage: Double = 0
 
     if move1.move_category == "Physical" then
-      initial_damage = move1.power/100 * attack
+      initial_damage = (move1.power / 100) * attack
       println(initial_damage)
       initial_damage = move1.move_type.checkEffectiveness(defending_type1, initial_damage)
       println(initial_damage)
@@ -126,7 +126,7 @@ abstract class Pokemon(_name : String):
         initial_damage -= enemy_defense
       end if
     else if move1.move_category == "Special" then
-      initial_damage = move1.power/100 * sp_attack
+      initial_damage = (move1.power / 100) * sp_attack
       initial_damage = move1.move_type.checkEffectiveness(defending_type1, initial_damage)
       initial_damage = move1.move_type.checkEffectiveness(defending_type2, initial_damage)
       if initial_damage == 0 then
@@ -142,7 +142,7 @@ abstract class Pokemon(_name : String):
     var initial_damage: Double = 0
 
     if move2.move_category == "Physical" then
-      initial_damage = move2.power * attack
+      initial_damage = (move2.power / 100) * attack
       initial_damage = move2.move_type.checkEffectiveness(defending_type1, initial_damage)
       initial_damage = move2.move_type.checkEffectiveness(defending_type2, initial_damage)
       if initial_damage == 0 then
@@ -154,7 +154,7 @@ abstract class Pokemon(_name : String):
         end if
       end if
     else if move2.move_category == "Special" then
-      initial_damage = move2.power * sp_attack
+      initial_damage = (move2.power / 100) * sp_attack
       initial_damage = move2.move_type.checkEffectiveness(defending_type1, initial_damage)
       initial_damage = move2.move_type.checkEffectiveness(defending_type2, initial_damage)
       if initial_damage == 0 then
@@ -175,6 +175,8 @@ class UserPokemon(_name: String) extends Pokemon(_name: String) :
 end UserPokemon
 
 class EnemyPokemon(_name: String) extends Pokemon(_name: String) :
+  var selectedMove: Move = null
+  var selectedTarget: UserPokemon = null
 
   def attackAI(targetPokemon1: UserPokemon, targetPokemon2: UserPokemon): Double =
     val movechoice: Int = Random.nextInt(2) + 1
@@ -182,17 +184,25 @@ class EnemyPokemon(_name: String) extends Pokemon(_name: String) :
     var damagedealt: Double = 0
 
     if movechoice == 1 then
+      selectedMove = move1
+
       if targetchoice == 1 then
+        selectedTarget = targetPokemon1
         damagedealt = move1Damage(targetPokemon1.type1.name, targetPokemon1.type2.name, targetPokemon1.defense, targetPokemon1.sp_defense)
       else if targetchoice == 2 then
+        selectedTarget = targetPokemon2
         damagedealt = move1Damage(targetPokemon2.type1.name, targetPokemon2.type2.name, targetPokemon2.defense, targetPokemon2.sp_defense)
       end if
+
     else if movechoice == 2 then
+      selectedMove = move2
+
       if targetchoice == 1 then
         damagedealt = move2Damage(targetPokemon1.type1.name, targetPokemon1.type2.name, targetPokemon1.defense, targetPokemon1.sp_defense)
       else if targetchoice == 2 then
         damagedealt = move2Damage(targetPokemon2.type1.name, targetPokemon2.type2.name, targetPokemon2.defense, targetPokemon2.sp_defense)
       end if
+
     end if
 
     damagedealt

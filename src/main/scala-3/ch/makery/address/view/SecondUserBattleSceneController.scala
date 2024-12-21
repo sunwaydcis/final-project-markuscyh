@@ -102,6 +102,19 @@ class SecondUserBattleSceneController():
     userImage1.image = userPortrait1
     userImage2.image = userPortrait2
 
+    if MainApp.userPokemon1.current_hp <= 0 then
+      userImage1.visible = false
+    end if
+    if MainApp.userPokemon2.current_hp <= 0 then
+      userImage2.visible = false
+    end if
+    if MainApp.enemyPokemon1.current_hp <= 0 then
+      enemyImage1.visible = false
+    end if
+    if MainApp.enemyPokemon2.current_hp <= 0 then
+      enemyImage2.visible = false
+    end if
+
     enemyName1.text = MainApp.enemyPokemon1.name()
     enemyName2.text = MainApp.enemyPokemon2.name()
     userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp + "/" + MainApp.userPokemon1.hp
@@ -112,7 +125,7 @@ class SecondUserBattleSceneController():
     userHealth1.progress = MainApp.userPokemon1.current_hp / MainApp.userPokemon1.hp
     userHealth2.progress = MainApp.userPokemon2.current_hp / MainApp.userPokemon2.hp
 
-    storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
+    storyLabel.text = "It is " + MainApp.userPokemon2.name() + "'s turn! What will " + MainApp.userPokemon2.name() + " do?"
 
   //Attack Actions
   def attackAction(action: ActionEvent): Unit =
@@ -126,8 +139,8 @@ class SecondUserBattleSceneController():
 
     moveButton1.visible = true
     moveButton2.visible = true
-    moveButton1.text = MainApp.userPokemon1.move1.name
-    moveButton2.text = MainApp.userPokemon1.move2.name
+    moveButton1.text = MainApp.userPokemon2.move1.name
+    moveButton2.text = MainApp.userPokemon2.move2.name
 
   def move1Action(action: ActionEvent): Unit =
     storyLabel.text = "Which Pokemon will you target?"
@@ -160,9 +173,9 @@ class SecondUserBattleSceneController():
 
   def target1Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
-      damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
+      damage = MainApp.userPokemon2.move1Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
     else if selectedMove == 2 then
-      damage = MainApp.userPokemon1.move2Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
+      damage = MainApp.userPokemon2.move2Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
     end if
 
     MainApp.enemyPokemon1.hpChange(damage)
@@ -173,13 +186,13 @@ class SecondUserBattleSceneController():
     nextButton.visible = true
 
     enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
-    storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " to " + MainApp.enemyPokemon1.name()
+    storyLabel.text = MainApp.userPokemon2.name() + " has dealt " + damage + " damage to " + MainApp.enemyPokemon1.name()
 
   def target2Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
-      damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
+      damage = MainApp.userPokemon2.move1Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
     else if selectedMove == 2 then
-      damage = MainApp.userPokemon1.move2Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
+      damage = MainApp.userPokemon2.move2Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
     end if
     MainApp.enemyPokemon2.hpChange(damage)
 
@@ -189,7 +202,7 @@ class SecondUserBattleSceneController():
     nextButton.visible = true
 
     enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
-    storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " to " + MainApp.enemyPokemon2.name()
+    storyLabel.text = MainApp.userPokemon2.name() + " has dealt " + damage + " damage to " + MainApp.enemyPokemon2.name()
 
 
   //Obersvation Actions
@@ -258,7 +271,7 @@ class SecondUserBattleSceneController():
       moveButton1.visible = false
       moveButton2.visible = false
 
-      storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
+      storyLabel.text = "It is " + MainApp.userPokemon2.name() + "'s turn! What will " + MainApp.userPokemon2.name() + " do?"
 
     else if actionType == "target" then
       moveButton1.visible = true
@@ -280,7 +293,7 @@ class SecondUserBattleSceneController():
       enemyButton1.visible = false
       enemyButton2.visible = false
 
-      storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
+      storyLabel.text = "It is " + MainApp.userPokemon2.name() + "'s turn! What will " + MainApp.userPokemon2.name() + " do?"
     end if
 
 

@@ -72,6 +72,14 @@ object MainApp extends JFXApp3:
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
   end showSecondUserBattleScene
+
+  def showEnemyBattleScene(): Unit =
+    val resource = getClass.getResource("view/EnemyBattleScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showEnemyBattleScene
   
   def setEnemyPokemon(enemy1: String, enemy2: String, user1: String): Unit =
     enemyPokemon1 = new EnemyPokemon(enemy1)
@@ -84,32 +92,41 @@ object MainApp extends JFXApp3:
   end setUserPokemon
 
   def battle(): Unit =
-
     var userAction: Boolean = false
     while !userAction do
-      MainApp.userPokemon1.turnCounterProgress()
-      MainApp.userPokemon2.turnCounterProgress()
-      MainApp.enemyPokemon1.turnCounterProgress()
-      MainApp.enemyPokemon2.turnCounterProgress()
+      if userPokemon1.current_hp > 0 then
+        userPokemon1.turnCounterProgress()
+      end if
+      if userPokemon2.current_hp > 0  then
+        userPokemon2.turnCounterProgress()
+      end if
+      if enemyPokemon1.current_hp > 0  then
+        enemyPokemon1.turnCounterProgress()
+      end if
+      if enemyPokemon2.current_hp > 0  then
+        enemyPokemon2.turnCounterProgress()
+      end if
 
-      if MainApp.userPokemon1.turn_counter == 0 then
-        MainApp.userPokemon1.turnCounterReset()
+      if userPokemon1.turn_counter == 0 then
+        userPokemon1.turnCounterReset()
         showFirstUserBattleScene()
         userAction = true
 
-      else if MainApp.userPokemon2.turn_counter <= 0 then
-        MainApp.userPokemon2.turnCounterReset()
+      else if userPokemon2.turn_counter <= 0 then
+        userPokemon2.turnCounterReset()
         showSecondUserBattleScene()
         userAction = true
 
-      else if MainApp.enemyPokemon1.turn_counter <= 0 then
-        MainApp.enemyPokemon1.turnCounterReset()
-
+      else if enemyPokemon1.turn_counter <= 0 then
+        enemyPokemon1.turnCounterReset()
+        attackingPokemon = enemyPokemon1
+        showEnemyBattleScene()
         userAction = true
 
-      else if MainApp.enemyPokemon2.turn_counter <= 0 then
-        MainApp.enemyPokemon2.turnCounterReset()
-
+      else if enemyPokemon2.turn_counter <= 0 then
+        enemyPokemon2.turnCounterReset()
+        attackingPokemon = enemyPokemon2
+        showEnemyBattleScene()
         userAction = true
       end if
 
@@ -127,6 +144,7 @@ object MainApp extends JFXApp3:
   var enemyPokemon2: EnemyPokemon = null
   var userPokemon1: UserPokemon = null
   var userPokemon2: UserPokemon = null
+  var attackingPokemon: EnemyPokemon = null
 
   
 end MainApp
