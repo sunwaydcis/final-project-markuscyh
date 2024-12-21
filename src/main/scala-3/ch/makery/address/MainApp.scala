@@ -77,19 +77,14 @@ object MainApp extends JFXApp3:
     enemyPokemon1 = new EnemyPokemon(enemy1)
     enemyPokemon2 = new EnemyPokemon(enemy2)
     userPokemon1 = new UserPokemon(user1)
-
-    //test if pokemon are set
-    println(enemyPokemon1.name())
-    println(enemyPokemon2.name())
-    println(userPokemon1.name())
   end setEnemyPokemon
 
   def setUserPokemon(user2: String): Unit =
     userPokemon2 = new UserPokemon(user2)
-    println(userPokemon2.name())
   end setUserPokemon
 
   def battle(): Unit =
+
     var userAction: Boolean = false
     while !userAction do
       MainApp.userPokemon1.turnCounterProgress()
@@ -97,34 +92,31 @@ object MainApp extends JFXApp3:
       MainApp.enemyPokemon1.turnCounterProgress()
       MainApp.enemyPokemon2.turnCounterProgress()
 
-      if MainApp.userPokemon1.turn_counter() == 0 then
+      if MainApp.userPokemon1.turn_counter == 0 then
         MainApp.userPokemon1.turnCounterReset()
-        
-        showFirstUserBattleScene()
 
         userAction = true
-        
-      else if MainApp.userPokemon2.turn_counter() <= 0 then
+
+      else if MainApp.userPokemon2.turn_counter <= 0 then
         MainApp.userPokemon2.turnCounterReset()
 
-        showSecondUserBattleScene()
 
         userAction = true
 
-      else if MainApp.enemyPokemon1.turn_counter() <= 0 then
+      else if MainApp.enemyPokemon1.turn_counter <= 0 then
         MainApp.enemyPokemon1.turnCounterReset()
 
         userAction = true
-        
-      else if MainApp.enemyPokemon2.turn_counter() <= 0 then
+
+      else if MainApp.enemyPokemon2.turn_counter <= 0 then
         MainApp.enemyPokemon2.turnCounterReset()
 
         userAction = true
       end if
-      
+
     end while
 
-  //Testing encounters
+  //Pokemon are set
   var encounterrate = new Encounter()
   var encounter1 = encounterrate.randomGrade()
   var encounter2 = encounterrate.randomGrade()
