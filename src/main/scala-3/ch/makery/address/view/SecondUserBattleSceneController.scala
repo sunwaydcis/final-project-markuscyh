@@ -92,14 +92,18 @@ class SecondUserBattleSceneController():
   val userPortrait1: Image = new Image(getClass.getResourceAsStream(userURL1))
   val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
 
+  var actionType: String = ""
+  var selectedMove: Int = 0
+  var damage: Double = 0
+
   def initialize(): Unit =
     enemyImage1.image = enemyPortrait1
     enemyImage2.image = enemyPortrait2
     userImage1.image = userPortrait1
     userImage2.image = userPortrait2
 
-    enemyName1.text =  MainApp.enemyPokemon1.name()
-    enemyName2.text =  MainApp.enemyPokemon2.name()
+    enemyName1.text = MainApp.enemyPokemon1.name()
+    enemyName2.text = MainApp.enemyPokemon2.name()
     userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp + "/" + MainApp.userPokemon1.hp
     userName2.text = MainApp.userPokemon2.name() + ": " + MainApp.userPokemon2.current_hp + "/" + MainApp.userPokemon2.hp
 
@@ -108,11 +112,95 @@ class SecondUserBattleSceneController():
     userHealth1.progress = MainApp.userPokemon1.current_hp / MainApp.userPokemon1.hp
     userHealth2.progress = MainApp.userPokemon2.current_hp / MainApp.userPokemon2.hp
 
+    storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
 
+  //Attack Actions
+  def attackAction(action: ActionEvent): Unit =
+    storyLabel.text = "What move will you use?"
 
-  def observeAction(action: ActionEvent): Unit =
+    actionType = "attack"
+
     attackButton.visible = false
     observeButton.visible = false
+    backButton.visible = true
+
+    moveButton1.visible = true
+    moveButton2.visible = true
+    moveButton1.text = MainApp.userPokemon1.move1.name
+    moveButton2.text = MainApp.userPokemon1.move2.name
+
+  def move1Action(action: ActionEvent): Unit =
+    storyLabel.text = "Which Pokemon will you target?"
+
+    actionType = "target"
+    selectedMove = 1
+
+    moveButton1.visible = false
+    moveButton2.visible = false
+
+    targetButton1.visible = true
+    targetButton2.visible = true
+    targetButton1.text = MainApp.enemyPokemon1.name()
+    targetButton2.text = MainApp.enemyPokemon2.name()
+
+
+  def move2Action(action: ActionEvent): Unit =
+    storyLabel.text = "Which Pokemon will you target?"
+
+    actionType = "target"
+    selectedMove = 2
+
+    moveButton1.visible = false
+    moveButton2.visible = false
+
+    targetButton1.visible = true
+    targetButton2.visible = true
+    targetButton1.text = MainApp.enemyPokemon1.name()
+    targetButton2.text = MainApp.enemyPokemon2.name()
+
+  def target1Action(action: ActionEvent): Unit =
+    if selectedMove == 1 then
+      damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
+    else if selectedMove == 2 then
+      damage = MainApp.userPokemon1.move2Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
+    end if
+
+    MainApp.enemyPokemon1.hpChange(damage)
+
+    targetButton1.visible = false
+    targetButton2.visible = false
+    backButton.visible = false
+    nextButton.visible = true
+
+    enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
+    storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " to " + MainApp.enemyPokemon1.name()
+
+  def target2Action(action: ActionEvent): Unit =
+    if selectedMove == 1 then
+      damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
+    else if selectedMove == 2 then
+      damage = MainApp.userPokemon1.move2Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
+    end if
+    MainApp.enemyPokemon2.hpChange(damage)
+
+    targetButton1.visible = false
+    targetButton2.visible = false
+    backButton.visible = false
+    nextButton.visible = true
+
+    enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
+    storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " to " + MainApp.enemyPokemon2.name()
+
+
+  //Obersvation Actions
+  def observeAction(action: ActionEvent): Unit =
+    storyLabel.text = "Which Pokemon do you want to observe?"
+
+    actionType = "observe"
+
+    attackButton.visible = false
+    observeButton.visible = false
+    backButton.visible = true
 
     userButton1.visible = true
     userButton2.visible = true
@@ -122,6 +210,7 @@ class SecondUserBattleSceneController():
   def observeEnemy1(action: ActionEvent): Unit =
     storyLabel.text = MainApp.enemyPokemon1.observation()
     nextButton.visible = true
+    backButton.visible = false
 
     userButton1.visible = false
     userButton2.visible = false
@@ -131,6 +220,7 @@ class SecondUserBattleSceneController():
   def observeEnemy2(action: ActionEvent): Unit =
     storyLabel.text = MainApp.enemyPokemon2.observation()
     nextButton.visible = true
+    backButton.visible = false
 
     userButton1.visible = false
     userButton2.visible = false
@@ -140,6 +230,7 @@ class SecondUserBattleSceneController():
   def observeUser1(action: ActionEvent): Unit =
     storyLabel.text = MainApp.userPokemon1.observation()
     nextButton.visible = true
+    backButton.visible = false
 
     userButton1.visible = false
     userButton2.visible = false
@@ -149,11 +240,52 @@ class SecondUserBattleSceneController():
   def observeUser2(action: ActionEvent): Unit =
     storyLabel.text = MainApp.userPokemon2.observation()
     nextButton.visible = true
+    backButton.visible = false
 
     userButton1.visible = false
     userButton2.visible = false
     enemyButton1.visible = false
     enemyButton2.visible = false
 
+
+  //Back Action
+  def handleBack(action: ActionEvent): Unit =
+    if actionType == "attack" then
+      attackButton.visible = true
+      observeButton.visible = true
+      backButton.visible = false
+
+      moveButton1.visible = false
+      moveButton2.visible = false
+
+      storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
+
+    else if actionType == "target" then
+      moveButton1.visible = true
+      moveButton2.visible = true
+
+      targetButton1.visible = false
+      targetButton2.visible = false
+      actionType = "attack"
+
+      storyLabel.text = "What move will you use?"
+
+    else if actionType == "observe" then
+      attackButton.visible = true
+      observeButton.visible = true
+      backButton.visible = false
+
+      userButton1.visible = false
+      userButton2.visible = false
+      enemyButton1.visible = false
+      enemyButton2.visible = false
+
+      storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
+    end if
+
+
+  //Handle Next Dialogue
   def handleNextDialogue(action: ActionEvent): Unit =
     nextButton.visible = false
+
+    battle()

@@ -3,7 +3,7 @@ import scala.util.Random
 
 case class Encounter() :
   def randomGrade() : String =
-    var grade: Int = Random.nextInt(310) + 1
+    val grade: Int = Random.nextInt(310) + 1
     if (grade <= 100) then
       encounterGrade1()
     else if  (grade <= 180) then

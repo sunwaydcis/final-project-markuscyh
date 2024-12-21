@@ -31,8 +31,8 @@ class SecondSceneController():
 
 
   // Set Images
-  val pokemonPortrait1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait()
-  val pokemonPortrait2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait()
+  val pokemonPortrait1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait
+  val pokemonPortrait2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait
 
   val image1: Image = new Image(getClass.getResourceAsStream(pokemonPortrait1))
   val image2: Image = new Image(getClass.getResourceAsStream(pokemonPortrait2))

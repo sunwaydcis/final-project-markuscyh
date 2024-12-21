@@ -94,13 +94,12 @@ object MainApp extends JFXApp3:
 
       if MainApp.userPokemon1.turn_counter == 0 then
         MainApp.userPokemon1.turnCounterReset()
-
+        showFirstUserBattleScene()
         userAction = true
 
       else if MainApp.userPokemon2.turn_counter <= 0 then
         MainApp.userPokemon2.turnCounterReset()
-
-
+        showSecondUserBattleScene()
         userAction = true
 
       else if MainApp.enemyPokemon1.turn_counter <= 0 then

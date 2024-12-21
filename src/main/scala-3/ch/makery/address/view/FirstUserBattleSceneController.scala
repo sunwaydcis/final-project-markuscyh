@@ -93,7 +93,8 @@ class FirstUserBattleSceneController():
   val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
 
   var actionType: String = ""
-  var selectedMove: Move = null
+  var selectedMove: Int = 0
+  var damage: Double = 0
 
   def initialize(): Unit =
     enemyImage1.image = enemyPortrait1
@@ -125,14 +126,14 @@ class FirstUserBattleSceneController():
 
     moveButton1.visible = true
     moveButton2.visible = true
-    moveButton1.text = MainApp.userPokemon1.move1._name
-    moveButton2.text = MainApp.userPokemon1.move2._name
+    moveButton1.text = MainApp.userPokemon1.move1.name
+    moveButton2.text = MainApp.userPokemon1.move2.name
 
   def move1Action(action: ActionEvent): Unit =
     storyLabel.text = "Which Pokemon will you target?"
 
     actionType = "target"
-    selectedMove = MainApp.userPokemon1.move1
+    selectedMove = 1
 
     moveButton1.visible = false
     moveButton2.visible = false
@@ -147,7 +148,7 @@ class FirstUserBattleSceneController():
     storyLabel.text = "Which Pokemon will you target?"
 
     actionType = "target"
-    selectedMove = MainApp.userPokemon1.move2
+    selectedMove = 2
 
     moveButton1.visible = false
     moveButton2.visible = false
@@ -158,10 +159,37 @@ class FirstUserBattleSceneController():
     targetButton2.text = MainApp.enemyPokemon2.name()
 
   def target1Action(action: ActionEvent): Unit =
-    null
+    if selectedMove == 1 then
+      damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
+    else if selectedMove == 2 then
+      damage = MainApp.userPokemon1.move2Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)  
+    end if
+    
+    MainApp.enemyPokemon1.hpChange(damage)
+
+    targetButton1.visible = false
+    targetButton2.visible = false
+    backButton.visible = false
+    nextButton.visible = true
+
+    enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
+    storyLabel.text = MainApp.userPokemon1.name() +" has dealt " + damage + " to " + MainApp.enemyPokemon1.name()
     
   def target2Action(action: ActionEvent): Unit =
-    null  
+    if selectedMove == 1 then
+      damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
+    else if selectedMove == 2 then
+      damage = MainApp.userPokemon1.move2Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
+    end if
+    MainApp.enemyPokemon2.hpChange(damage)
+
+    targetButton1.visible = false
+    targetButton2.visible = false
+    backButton.visible = false
+    nextButton.visible = true
+
+    enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
+    storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " to " + MainApp.enemyPokemon2.name()
 
 
   //Obersvation Actions

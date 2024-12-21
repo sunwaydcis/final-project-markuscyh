@@ -1,10 +1,10 @@
 package pokemon
 
 class Move(__name: String):
-  var _move_type: String = MoveDescription.valueOf(__name).move_type()
-  var _move_category: String = MoveDescription.valueOf(__name).move_category()
-  var _power: Int = MoveDescription.valueOf(__name).power()
-  var _name: String = MoveDescription.valueOf(__name).name()
+  var move_type: Type = new Type(MoveDescription.valueOf(__name)._move_type)
+  var move_category: String = MoveDescription.valueOf(__name)._move_category
+  var power: Int = MoveDescription.valueOf(__name)._power
+  var name: String = MoveDescription.valueOf(__name)._name
 
   enum MoveDescription(val _name: String,
                        val _move_type: String,
@@ -94,18 +94,6 @@ class Move(__name: String):
 
     //Fairy Type Moves
     case Play_Rough extends MoveDescription(    "Play Rough",     "Fairy",    "Physical", 90)
-
-    def name(): String =
-      _name
-
-    def move_type(): String =
-      _move_type
-
-    def move_category(): String =
-      _move_category
-
-    def power(): Int =
-      _power
 
   end MoveDescription
 

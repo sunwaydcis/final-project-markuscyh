@@ -1,5 +1,6 @@
 package pokemon
 
+import scala.util.Random
 
 abstract class Pokemon(_name : String):
   // Gets the Pokemon from the enum
@@ -68,7 +69,7 @@ abstract class Pokemon(_name : String):
     case Pidgeot extends PokemonDescription(   "Pidgeot",    3, 143,  76,  72,  67,  67,  86,  "Normal", "Flying",    "Wing_Attack",    "Aerial_Ace",     "pidgeot_front.png",    "pidgeot_back.png")
     case Pikachu extends PokemonDescription(   "Pikachu",    3, 100,  63,  50,  58,  55,  90,  "Electric","",         "Tackle",         "Thunderbolt",    "pikachu_front.png",    "pikachu_back.png")
     case Pupitar extends PokemonDescription(   "Pupitar",    3, 130,  83,  70,  63,  67,  50,  "Rock",   "Ground",    "Bite",           "Rock_Slide",     "pupitar_front.png",    "pupitar_back.png")
-    case Raichu extends PokemonDescription(    "Raichu",     3, 120,  82,  54,  82,  73,  95,  "Electric","",         "Thinderbolt",    "Discharge",      "raichu_front.png",     "raichu_back.png")
+    case Raichu extends PokemonDescription(    "Raichu",     3, 120,  82,  54,  82,  73,  95,  "Electric","",         "Thunderbolt",    "Discharge",      "raichu_front.png",     "raichu_back.png")
 
     //Grade 4 Pokemon
     case Decidueye extends PokemonDescription( "Decidueye",  4, 161,  137, 105, 130, 130, 70,  "Grass",  "Ghost",     "Leaf_Blade",     "Spirit_Shackle", "decidueye_front.png",  "decidueye_back.png")
@@ -98,7 +99,10 @@ abstract class Pokemon(_name : String):
   
   // Setters
   def hpChange(change: Double): Unit =
-    current_hp += change
+    current_hp -= change
+    if current_hp < 0 then
+      current_hp = 0
+    end if
 
   def turnCounterProgress(): Unit =
     turn_counter -= 1
@@ -106,10 +110,91 @@ abstract class Pokemon(_name : String):
   def turnCounterReset(): Unit =
     turn_counter = turn_speed
 
+  def move1Damage(defending_type1: String, defending_type2: String, enemy_defense: Int, enemy_sp_defense: Int): Double =
+    var initial_damage: Double = 0
+
+    if move1.move_category == "Physical" then
+      initial_damage = move1.power/100 * attack
+      println(initial_damage)
+      initial_damage = move1.move_type.checkEffectiveness(defending_type1, initial_damage)
+      println(initial_damage)
+      initial_damage = move1.move_type.checkEffectiveness(defending_type2, initial_damage)
+      println(initial_damage)
+      if initial_damage == 0 then
+        null
+      else
+        initial_damage -= enemy_defense
+      end if
+    else if move1.move_category == "Special" then
+      initial_damage = move1.power/100 * sp_attack
+      initial_damage = move1.move_type.checkEffectiveness(defending_type1, initial_damage)
+      initial_damage = move1.move_type.checkEffectiveness(defending_type2, initial_damage)
+      if initial_damage == 0 then
+        null
+      else
+        initial_damage = enemy_sp_defense
+      end if
+    end if
+
+    initial_damage
+
+  def move2Damage(defending_type1: String, defending_type2: String, enemy_defense: Int, enemy_sp_defense: Int): Double =
+    var initial_damage: Double = 0
+
+    if move2.move_category == "Physical" then
+      initial_damage = move2.power * attack
+      initial_damage = move2.move_type.checkEffectiveness(defending_type1, initial_damage)
+      initial_damage = move2.move_type.checkEffectiveness(defending_type2, initial_damage)
+      if initial_damage == 0 then
+        null
+      else
+        initial_damage -= enemy_defense
+        if initial_damage <= 0 then
+          initial_damage = 1
+        end if
+      end if
+    else if move2.move_category == "Special" then
+      initial_damage = move2.power * sp_attack
+      initial_damage = move2.move_type.checkEffectiveness(defending_type1, initial_damage)
+      initial_damage = move2.move_type.checkEffectiveness(defending_type2, initial_damage)
+      if initial_damage == 0 then
+        null
+      else
+        initial_damage = enemy_sp_defense
+        if initial_damage <= 0 then
+          initial_damage = 1
+        end if
+      end if
+    end if
+
+    initial_damage
+
 end Pokemon
 
 class UserPokemon(_name: String) extends Pokemon(_name: String) :
 end UserPokemon
 
 class EnemyPokemon(_name: String) extends Pokemon(_name: String) :
+
+  def attackAI(targetPokemon1: UserPokemon, targetPokemon2: UserPokemon): Double =
+    val movechoice: Int = Random.nextInt(2) + 1
+    val targetchoice: Int = Random.nextInt(2) + 1
+    var damagedealt: Double = 0
+
+    if movechoice == 1 then
+      if targetchoice == 1 then
+        damagedealt = move1Damage(targetPokemon1.type1.name, targetPokemon1.type2.name, targetPokemon1.defense, targetPokemon1.sp_defense)
+      else if targetchoice == 2 then
+        damagedealt = move1Damage(targetPokemon2.type1.name, targetPokemon2.type2.name, targetPokemon2.defense, targetPokemon2.sp_defense)
+      end if
+    else if movechoice == 2 then
+      if targetchoice == 1 then
+        damagedealt = move2Damage(targetPokemon1.type1.name, targetPokemon1.type2.name, targetPokemon1.defense, targetPokemon1.sp_defense)
+      else if targetchoice == 2 then
+        damagedealt = move2Damage(targetPokemon2.type1.name, targetPokemon2.type2.name, targetPokemon2.defense, targetPokemon2.sp_defense)
+      end if
+    end if
+
+    damagedealt
+
 end EnemyPokemon
