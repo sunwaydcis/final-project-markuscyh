@@ -52,12 +52,12 @@
                            <children>
                               <Label fx:id="storyLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="129.0" prefWidth="430.0" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
                               <Button fx:id="observeButton" layoutX="249.0" layoutY="68.0" mnemonicParsing="false" onAction="#observeAction" prefHeight="34.0" prefWidth="64.0" text="Observe" />
-                              <Button fx:id="moveButton1" layoutX="148.0" layoutY="42.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Move 1" visible="false" AnchorPane.rightAnchor="248.0" />
-                              <Button fx:id="attackButton" layoutX="148.0" layoutY="68.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Attack" AnchorPane.leftAnchor="148.0" />
-                              <Button fx:id="moveButton2" layoutX="249.0" layoutY="42.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Move 2" visible="false" />
-                              <Button fx:id="targetButton1" layoutX="148.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Target 1" visible="false" />
-                              <Button fx:id="targetButton2" layoutX="249.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Target 2" visible="false" />
-                              <Button fx:id="backButton" layoutX="344.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="34.0" prefWidth="64.0" text="Back" visible="false" />
+                              <Button fx:id="moveButton1" layoutX="148.0" layoutY="42.0" mnemonicParsing="false" onAction="#move1Action" prefHeight="34.0" prefWidth="100.0" text="Water Shuriken" visible="false" AnchorPane.rightAnchor="248.0" />
+                              <Button fx:id="attackButton" layoutX="148.0" layoutY="68.0" mnemonicParsing="false" onAction="#attackAction" prefHeight="34.0" prefWidth="64.0" text="Attack" AnchorPane.leftAnchor="148.0" />
+                              <Button fx:id="moveButton2" layoutX="249.0" layoutY="42.0" mnemonicParsing="false" onAction="#move2Action" prefHeight="34.0" prefWidth="100.0" text="Water Shuriken" visible="false" />
+                              <Button fx:id="targetButton1" layoutX="112.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" text="Target 1" visible="false" />
+                              <Button fx:id="targetButton2" layoutX="249.0" layoutY="96.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" text="Target 2" visible="false" />
+                              <Button fx:id="backButton" layoutX="370.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="34.0" prefWidth="64.0" text="Back" visible="false" />
                               <Button fx:id="nextButton" layoutX="422.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleNextDialogue" text="&gt;" visible="false">
                                  <font>
                                     <Font name="Times New Roman" size="12.0" />

@@ -39,9 +39,9 @@ class OpeningSceneController():
   var pokemonEncounter3: EnemyPokemon = new EnemyPokemon(MainApp.encounter3)
 
   //Sets the image for the Pokemon
-  val pokemonPortrait1: String = "/images/front_portrait/" + pokemonEncounter1.frontportrait()
-  val pokemonPortrait2: String = "/images/front_portrait/" + pokemonEncounter2.frontportrait()
-  val pokemonPortrait3: String = "/images/front_portrait/" + pokemonEncounter3.frontportrait()
+  val pokemonPortrait1: String = "/images/front_portrait/" + pokemonEncounter1.frontportrait
+  val pokemonPortrait2: String = "/images/front_portrait/" + pokemonEncounter2.frontportrait
+  val pokemonPortrait3: String = "/images/front_portrait/" + pokemonEncounter3.frontportrait
 
   val image1: Image = new Image(getClass.getResourceAsStream(pokemonPortrait1))
   val image2: Image = new Image(getClass.getResourceAsStream(pokemonPortrait2))

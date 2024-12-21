@@ -82,10 +82,10 @@ class SecondUserBattleSceneController():
   protected var nextButton: Button = null
 
   // Set Images
-  val enemyURL1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait()
-  val enemyURL2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait()
-  val userURL1: String = "/images/back_portrait/" + MainApp.userPokemon1.backportrait()
-  val userURL2: String = "/images/back_portrait/" + MainApp.userPokemon2.backportrait()
+  val enemyURL1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait
+  val enemyURL2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait
+  val userURL1: String = "/images/back_portrait/" + MainApp.userPokemon1.backportrait
+  val userURL2: String = "/images/back_portrait/" + MainApp.userPokemon2.backportrait
 
   val enemyPortrait1: Image = new Image(getClass.getResourceAsStream(enemyURL1))
   val enemyPortrait2: Image = new Image(getClass.getResourceAsStream(enemyURL2))
@@ -100,13 +100,13 @@ class SecondUserBattleSceneController():
 
     enemyName1.text =  MainApp.enemyPokemon1.name()
     enemyName2.text =  MainApp.enemyPokemon2.name()
-    userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp() + "/" + MainApp.userPokemon1.hp()
-    userName2.text = MainApp.userPokemon2.name() + ": " + MainApp.userPokemon2.current_hp() + "/" + MainApp.userPokemon2.hp()
+    userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp + "/" + MainApp.userPokemon1.hp
+    userName2.text = MainApp.userPokemon2.name() + ": " + MainApp.userPokemon2.current_hp + "/" + MainApp.userPokemon2.hp
 
-    enemyHealth1.progress = MainApp.enemyPokemon1.current_hp() / MainApp.enemyPokemon1.hp()
-    enemyHealth2.progress = MainApp.enemyPokemon2.current_hp() / MainApp.enemyPokemon2.hp()
-    userHealth1.progress = MainApp.userPokemon1.current_hp() / MainApp.userPokemon1.hp()
-    userHealth2.progress = MainApp.userPokemon2.current_hp() / MainApp.userPokemon2.hp()
+    enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
+    enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
+    userHealth1.progress = MainApp.userPokemon1.current_hp / MainApp.userPokemon1.hp
+    userHealth2.progress = MainApp.userPokemon2.current_hp / MainApp.userPokemon2.hp
 
 
 
