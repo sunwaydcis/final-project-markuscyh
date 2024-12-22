@@ -14,7 +14,7 @@ import javafx.scene.control.ProgressBar
 
 
 @FXML
-class EnemyBattleSceneController():
+class PostBattleSceneController:
 
   //Label for battle dialogue
   @FXML
@@ -48,10 +48,6 @@ class EnemyBattleSceneController():
   @FXML
   protected var userHealth2: ProgressBar = null
 
-  //Next Button
-  @FXML
-  protected var nextButton: Button = null
-
   // Set Images
   val enemyURL1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait
   val enemyURL2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait
@@ -63,33 +59,11 @@ class EnemyBattleSceneController():
   val userPortrait1: Image = new Image(getClass.getResourceAsStream(userURL1))
   val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
 
-  var faint: Boolean = false
-  var faintTarget: String = ""
-  
-
   def initialize(): Unit =
     enemyImage1.image = enemyPortrait1
     enemyImage2.image = enemyPortrait2
     userImage1.image = userPortrait1
     userImage2.image = userPortrait2
-
-    var hpCheck: Boolean = true
-
-    while hpCheck do
-      attackingPokemon.setSelectedTarget(MainApp.userPokemon1, MainApp.userPokemon2)
-
-      if attackingPokemon.selectedTarget.name() == MainApp.userPokemon1.name() then
-        if MainApp.userPokemon1.current_hp > 0 then
-          hpCheck = false
-        end if
-      else if attackingPokemon.selectedTarget.name() == MainApp.userPokemon2.name() then
-        if MainApp.userPokemon2.current_hp > 0 then
-          hpCheck = false
-        end if
-      end if
-
-    end while
-    val damage_dealt: Double = MainApp.attackingPokemon.attackAI()
 
     if MainApp.userPokemon1.current_hp <= 0 then
       userImage1.visible = false
@@ -102,14 +76,6 @@ class EnemyBattleSceneController():
     end if
     if MainApp.enemyPokemon2.current_hp <= 0 then
       enemyImage2.visible = false
-    end if
-
-    storyLabel.text = "The enemy " + MainApp.attackingPokemon.name() + " used " + MainApp.attackingPokemon.selectedMove.name + " against " + MainApp.attackingPokemon.selectedTarget.name() + ", dealing " + damage_dealt + " damage!"
-
-    if MainApp.attackingPokemon.selectedTarget.name() == MainApp.userPokemon1.name() then
-      MainApp.userPokemon1.hpChange(damage_dealt)
-    else if MainApp.attackingPokemon.selectedTarget.name() == MainApp.userPokemon2.name() then
-      MainApp.userPokemon2.hpChange(damage_dealt)
     end if
 
     enemyName1.text = MainApp.enemyPokemon1.name()
@@ -126,16 +92,3 @@ class EnemyBattleSceneController():
     enemyHealth2.progress = enemyHp2
     userHealth1.progress = userHp1
     userHealth2.progress = userHp2
-    
-    if MainApp.attackingPokemon.selectedTarget.current_hp <= 0 then
-      faint = true
-    end if
-
-  def handleNextDialogue(action: ActionEvent): Unit =
-    if faint then
-      storyLabel.text = MainApp.attackingPokemon.selectedTarget.name() + " has fainted!"
-      faint = false
-    else
-      nextButton.visible = false
-      battle()
-    end if

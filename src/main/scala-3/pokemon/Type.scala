@@ -44,19 +44,19 @@ class Type(_pokemontype: String) :
     end if
 
   def Normal(): Unit =
-    effective = List("")
+    effective = List("Nothing")
     ineffective = List("Rock", "Steel")
     immune = List("Ghost")
 
   def Fire(): Unit =
     effective = List("Grass", "Ice", "Bug", "Steel")
     ineffective = List("Fire", "Water", "Rock", "Dragon")
-    immune = List("")
+    immune = List("Nothing")
 
   def Water(): Unit =
      effective = List("Fire", "Ground", "Rock")
      ineffective = List("Water", "Grass", "Dragon")
-     immune = List("")
+     immune = List("Nothing")
 
   def Electric(): Unit =
      effective = List("Water", "Flying")
@@ -66,12 +66,12 @@ class Type(_pokemontype: String) :
   def Grass(): Unit =
      effective = List("Water", "Ground", "Rock")
      ineffective = List("Fire", "Grass", "Poison", "Flying", "Bug", "Dragon", "Steel")
-     immune = List("")
+     immune = List("Nothing")
 
   def Ice(): Unit =
      effective = List("Grass", "Ground", "Flying", "Dragon")
      ineffective = List("Fire", "Water", "Ice", "Steel")
-     immune = List("")
+     immune = List("Nothing")
 
   def Fighting(): Unit =
      effective = List("Normal", "Ice", "Dark", "Steel", "Rock")
@@ -91,7 +91,7 @@ class Type(_pokemontype: String) :
   def Flying(): Unit =
      effective = List("Grass", "Fighting", "Bug")
      ineffective = List("Electric", "Rock", "Steel")
-     immune = List("")
+     immune = List("Nothing")
 
   def Psychic(): Unit =
      effective = List("Fighting", "Poison")
@@ -101,12 +101,12 @@ class Type(_pokemontype: String) :
   def Bug(): Unit =
      effective = List("Grass", "Psychic", "Dark")
      ineffective = List("Fire", "Fighting", "Poison", "Flying", "Ghost", "Steel", "Fairy")
-     immune = List("")
+     immune = List("Nothing")
 
   def Rock(): Unit =
      effective = List("Fire", "Flying", "Ice", "Bug")
      ineffective = List("Fighting", "Ground", "Steel")
-     immune = List("")
+     immune = List("Nothing")
 
   def Ghost(): Unit =
      effective = List("Psychic", "Ghost")
@@ -121,21 +121,21 @@ class Type(_pokemontype: String) :
   def Dark(): Unit =
      effective = List("Psychic", "Ghost")
      ineffective = List("Fighting", "Dark", "Fairy")
-     immune = List("")
+     immune = List("Nothing")
 
   def Steel(): Unit =
      effective = List("Ice", "Rock", "Fairy")
      ineffective = List("Fire", "Water", "Electric", "Steel")
-     immune = List("")
+     immune = List("Nothing")
 
   def Fairy(): Unit =
      effective = List("Fighting", "Dark", "Dragon")
      ineffective = List("Fire", "Poison", "Steel")
-     immune = List("")
+     immune = List("Nothing")
 
   def None(): Unit =
-     effective = List("")
-     ineffective = List("")
-     immune = List("")
+     effective = List("Nothing")
+     ineffective = List("Nothing")
+     immune = List("Nothing")
 end Type
 

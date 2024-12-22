@@ -80,6 +80,14 @@ object MainApp extends JFXApp3:
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
   end showEnemyBattleScene
+
+  def showPostBattleScene(): Unit =
+    val resource = getClass.getResource("view/PostBattleScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showPostBattleScene
   
   def setEnemyPokemon(enemy1: String, enemy2: String, user1: String): Unit =
     enemyPokemon1 = new EnemyPokemon(enemy1)
@@ -94,6 +102,16 @@ object MainApp extends JFXApp3:
   def battle(): Unit =
     var userAction: Boolean = false
     while !userAction do
+      if userPokemon1.current_hp <= 0 && userPokemon2.current_hp <= 0 then
+        showPostBattleScene()
+        println("Success")
+        userAction = true
+      else if enemyPokemon1.current_hp <= 0 && enemyPokemon2.current_hp <= 0 then
+        showPostBattleScene()
+        println("Success")
+        userAction = true
+      end if
+      
       if userPokemon1.current_hp > 0 then
         userPokemon1.turnCounterProgress()
       end if

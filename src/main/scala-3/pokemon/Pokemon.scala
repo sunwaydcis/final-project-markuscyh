@@ -114,7 +114,7 @@ abstract class Pokemon(_name : String):
     var initial_damage: Double = 0
 
     if move1.move_category == "Physical" then
-      initial_damage = (move1.power / 100) * attack
+      initial_damage = attack * move1.power / 100
       println(initial_damage)
       initial_damage = move1.move_type.checkEffectiveness(defending_type1, initial_damage)
       println(initial_damage)
@@ -124,49 +124,72 @@ abstract class Pokemon(_name : String):
         null
       else
         initial_damage -= enemy_defense
+        println(initial_damage + " - " + enemy_defense)
+        println(initial_damage)
+        if initial_damage <= 5 then
+          initial_damage = 5
+        end if
       end if
     else if move1.move_category == "Special" then
-      initial_damage = (move1.power / 100) * sp_attack
+      initial_damage = sp_attack * move1.power / 100
+      println(initial_damage)
       initial_damage = move1.move_type.checkEffectiveness(defending_type1, initial_damage)
+      println(initial_damage)
       initial_damage = move1.move_type.checkEffectiveness(defending_type2, initial_damage)
+      println(initial_damage)
       if initial_damage == 0 then
         null
       else
-        initial_damage = enemy_sp_defense
+        initial_damage -= enemy_sp_defense
+        println(initial_damage + " - " + enemy_sp_defense)
+        println(initial_damage)
+        if initial_damage <= 5 then
+          initial_damage = 5
+        end if
       end if
     end if
-
+    println(initial_damage)
     initial_damage
 
   def move2Damage(defending_type1: String, defending_type2: String, enemy_defense: Int, enemy_sp_defense: Int): Double =
     var initial_damage: Double = 0
 
     if move2.move_category == "Physical" then
-      initial_damage = (move2.power / 100) * attack
+      initial_damage = attack * move2.power / 100
+      println(initial_damage)
       initial_damage = move2.move_type.checkEffectiveness(defending_type1, initial_damage)
+      println(initial_damage)
       initial_damage = move2.move_type.checkEffectiveness(defending_type2, initial_damage)
+      println(initial_damage)
       if initial_damage == 0 then
         null
       else
         initial_damage -= enemy_defense
-        if initial_damage <= 0 then
-          initial_damage = 1
+        println(initial_damage + " - " + enemy_defense)
+        println(initial_damage)
+        if initial_damage <= 5 then
+          initial_damage = 5
         end if
       end if
     else if move2.move_category == "Special" then
-      initial_damage = (move2.power / 100) * sp_attack
+      initial_damage = sp_attack * move2.power / 100
+      println(initial_damage)
       initial_damage = move2.move_type.checkEffectiveness(defending_type1, initial_damage)
+      println(initial_damage)
       initial_damage = move2.move_type.checkEffectiveness(defending_type2, initial_damage)
+      println(initial_damage)
       if initial_damage == 0 then
         null
       else
-        initial_damage = enemy_sp_defense
-        if initial_damage <= 0 then
-          initial_damage = 1
+        initial_damage -= enemy_sp_defense
+        println(initial_damage + " - " + enemy_sp_defense)
+        println(initial_damage)
+        if initial_damage <= 5 then
+          initial_damage = 5
         end if
       end if
     end if
-
+    println(initial_damage)
     initial_damage
 
 end Pokemon
@@ -178,30 +201,26 @@ class EnemyPokemon(_name: String) extends Pokemon(_name: String) :
   var selectedMove: Move = null
   var selectedTarget: UserPokemon = null
 
-  def attackAI(targetPokemon1: UserPokemon, targetPokemon2: UserPokemon): Double =
-    val movechoice: Int = Random.nextInt(2) + 1
-    val targetchoice: Int = Random.nextInt(2) + 1
+  def setSelectedTarget(targetPokemon1: UserPokemon, targetPokemon2: UserPokemon): Unit =
+    val targetchoice: Int = Random.nextInt(4) + 1
+
+    if targetchoice <= 2 then
+      selectedTarget = targetPokemon1
+    else if targetchoice <= 4 then
+      selectedTarget = targetPokemon2
+    end if
+
+  def attackAI(): Double =
+    val movechoice: Int = Random.nextInt(4) + 1
     var damagedealt: Double = 0
 
-    if movechoice == 1 then
+    if movechoice <= 2 then
       selectedMove = move1
+      damagedealt = move1Damage(selectedTarget.type1.name, selectedTarget.type2.name, selectedTarget.defense, selectedTarget.sp_defense)
 
-      if targetchoice == 1 then
-        selectedTarget = targetPokemon1
-        damagedealt = move1Damage(targetPokemon1.type1.name, targetPokemon1.type2.name, targetPokemon1.defense, targetPokemon1.sp_defense)
-      else if targetchoice == 2 then
-        selectedTarget = targetPokemon2
-        damagedealt = move1Damage(targetPokemon2.type1.name, targetPokemon2.type2.name, targetPokemon2.defense, targetPokemon2.sp_defense)
-      end if
-
-    else if movechoice == 2 then
+    else if movechoice <= 4 then
       selectedMove = move2
-
-      if targetchoice == 1 then
-        damagedealt = move2Damage(targetPokemon1.type1.name, targetPokemon1.type2.name, targetPokemon1.defense, targetPokemon1.sp_defense)
-      else if targetchoice == 2 then
-        damagedealt = move2Damage(targetPokemon2.type1.name, targetPokemon2.type2.name, targetPokemon2.defense, targetPokemon2.sp_defense)
-      end if
+      damagedealt = move2Damage(selectedTarget.type1.name, selectedTarget.type2.name, selectedTarget.defense, selectedTarget.sp_defense)
 
     end if
 

@@ -95,6 +95,8 @@ class FirstUserBattleSceneController():
   var actionType: String = ""
   var selectedMove: Int = 0
   var damage: Double = 0
+  var faint: Boolean = false
+  var faintTarget: String = ""
 
   def initialize(): Unit =
     enemyImage1.image = enemyPortrait1
@@ -120,10 +122,15 @@ class FirstUserBattleSceneController():
     userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp + "/" + MainApp.userPokemon1.hp
     userName2.text = MainApp.userPokemon2.name() + ": " + MainApp.userPokemon2.current_hp + "/" + MainApp.userPokemon2.hp
 
-    enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
-    enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
-    userHealth1.progress = MainApp.userPokemon1.current_hp / MainApp.userPokemon1.hp
-    userHealth2.progress = MainApp.userPokemon2.current_hp / MainApp.userPokemon2.hp
+    val enemyHp1: Double = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
+    val enemyHp2: Double = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
+    val userHp1: Double = MainApp.userPokemon1.current_hp / MainApp.userPokemon1.hp
+    val userHp2: Double = MainApp.userPokemon2.current_hp / MainApp.userPokemon2.hp
+    
+    enemyHealth1.progress = enemyHp1
+    enemyHealth2.progress = enemyHp2
+    userHealth1.progress = userHp1
+    userHealth2.progress = userHp2
 
     storyLabel.text = "It is " + MainApp.userPokemon1.name() + "'s turn! What will " + MainApp.userPokemon1.name() + " do?"
 
@@ -179,6 +186,7 @@ class FirstUserBattleSceneController():
     end if
     
     MainApp.enemyPokemon1.hpChange(damage)
+    damage -= damage*2
 
     targetButton1.visible = false
     targetButton2.visible = false
@@ -187,6 +195,12 @@ class FirstUserBattleSceneController():
 
     enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
     storyLabel.text = MainApp.userPokemon1.name() +" has dealt " + damage + " damage to " + MainApp.enemyPokemon1.name()
+    
+    if MainApp.enemyPokemon1.current_hp <= 0 then
+      faint = true
+      faintTarget = MainApp.enemyPokemon1.name()
+    
+    
     
   def target2Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
@@ -204,6 +218,10 @@ class FirstUserBattleSceneController():
     enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
     storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " damage to " + MainApp.enemyPokemon2.name()
 
+    if MainApp.enemyPokemon2.current_hp <= 0 then
+      faint = true
+      faintTarget = MainApp.enemyPokemon2.name()
+
 
   //Obersvation Actions
   def observeAction(action: ActionEvent): Unit =
@@ -215,10 +233,15 @@ class FirstUserBattleSceneController():
     observeButton.visible = false
     backButton.visible = true
 
-    userButton1.visible = true
-    userButton2.visible = true
-    enemyButton1.visible = true
-    enemyButton2.visible = true
+    if MainApp.userPokemon1.current_hp > 0 then
+      userButton1.visible = true
+    else if MainApp.userPokemon2.current_hp > 0 then
+      userButton2.visible = true
+    else if MainApp.enemyPokemon1.current_hp > 0 then
+      enemyButton1.visible = true
+    else if MainApp.enemyPokemon2.current_hp > 0 then
+      enemyButton2.visible = true
+    end if
 
   def observeEnemy1(action: ActionEvent): Unit =
     storyLabel.text = MainApp.enemyPokemon1.observation()
@@ -299,6 +322,10 @@ class FirstUserBattleSceneController():
 
   //Handle Next Dialogue
   def handleNextDialogue(action: ActionEvent): Unit =
-    nextButton.visible = false
-
-    battle()
+    if faint then
+      storyLabel.text = faintTarget + " has fainted!"
+      faint = false
+    else  
+      nextButton.visible = false
+      battle()
+    end if
