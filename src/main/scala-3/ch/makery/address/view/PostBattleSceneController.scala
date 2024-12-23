@@ -41,12 +41,14 @@ class PostBattleSceneController():
   var storyDialogue2: String = null
   var storyDialogue3: String = null
   var storyDialogue4: String = null
-  var storyDialogue5: String = null
-  var storyDialogue6: String = null
-  var storyDialogue7: String = null
-  var storyDialogue8: String = null
-  var storyDialogue9: String = null
+  var storyDialogue5: String = "You rush to obtain the Pokeballs to catch the weakened Pokemon. You grab, pull out - "
+  var storyDialogue6: String = "Two " + pokeball.name + "s and throw them at the wild Pokemon"
+  var storyDialogue7: String = "One"
+  var storyDialogue8: String = "Two"
+  var storyDialogue9: String = "Three"
   var storyDialogue10: String = null
+  var storyDialogue11: String = null
+  var storyDialogue12: String = "The End"
 
   val pokeball: CatchRate = new CatchRate()
   val pokemon1Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon1.grade)
@@ -57,20 +59,21 @@ class PostBattleSceneController():
     storyDialogue2 = "As you turn to leave the forest and go home with your newly acquired partner, you spot a glint in a nearby bush."
     storyDialogue3 = "You step forward to take a closer look and rather than one glint, you spot two glints in the bush."
     storyDialogue4 = "You recognize the glints being from two Pokeballs of the same type. What type of Pokeballs, you weren't able to see as the two wild Pokemon start to recover."
-    storyDialogue5 = "You rush to obtain the Pokeballs to catch the weakened Pokemon. You grab, pull out - "
-    storyDialogue6 = "Two " + pokeball.name + "s and throw them at the wild Pokemon"
-    storyDialogue7 = "One"
-    storyDialogue8 = "Two"
-    storyDialogue9 = "Three"
+
     if pokemon1Catch && pokemon2Catch then
       storyDialogue10 = "Congratulations, you have caught " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name()
+      storyDialogue11 = "With your new companions, you head home with a spring in your step. Today was a good day."
     else if pokemon1Catch && !pokemon2Catch then
       storyDialogue10 = "You have caught " + MainApp.enemyPokemon1.name() + ", but " + MainApp.enemyPokemon2.name() + " broke free and escaped"
+      storyDialogue11 = "Despite one Pokemon escaping you got two new partners in " + MainApp.userPokemon1.name() + " and " + MainApp.enemyPokemon1.name() + " and decide to go home to rest"
     else if pokemon1Catch && pokemon2Catch then
       storyDialogue10 = "You have caught " + MainApp.enemyPokemon2.name() + ", but " + MainApp.enemyPokemon1.name() + " broke free and escaped"
+      storyDialogue11 = "Despite one Pokemon escaping you got two new partners in " + MainApp.userPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " and decide to go home to rest"
     else if !pokemon1Catch && !pokemon2Catch then
       storyDialogue10 = "What a shame! Both " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " broke free and escaped"
+      storyDialogue11 = "Whatever, you already got yourself one new friend in " + MainApp.userPokemon1.name() + " and head home"
     end if
+
 
   else
     storyDialogue1 = "Your have been bested by the wild Pokemon and are left defenseless"
