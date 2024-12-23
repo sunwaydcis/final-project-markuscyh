@@ -1,6 +1,7 @@
 package ch.makery.address.view
 
 import pokemon.*
+import pokeball.*
 import ch.makery.address.MainApp
 import ch.makery.address.MainApp.*
 import javafx.event.ActionEvent
@@ -10,85 +11,112 @@ import scalafx.Includes.*
 import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.control.Button
-import javafx.scene.control.ProgressBar
-
 
 @FXML
-class PostBattleSceneController:
+class PostBattleSceneController():
 
-  //Label for battle dialogue
   @FXML
   protected var storyLabel: Label = null
   @FXML
-  protected var enemyName1: Label = null
+  protected var firstImage: ImageView = null
   @FXML
-  protected var enemyName2: Label = null
+  protected var secondImage: ImageView = null
   @FXML
-  protected var userName1: Label = null
+  protected var nextButton: Button = null
   @FXML
-  protected var userName2: Label = null
+  protected var finalButton: Button = null
 
-  //Pokemon ImageViews
-  @FXML
-  protected var enemyImage1: ImageView = null
-  @FXML
-  protected var enemyImage2: ImageView = null
-  @FXML
-  protected var userImage1: ImageView = null
-  @FXML
-  protected var userImage2: ImageView = null
-
-  //Pokemon Healthbars
-  @FXML
-  protected var enemyHealth1: ProgressBar = null
-  @FXML
-  protected var enemyHealth2: ProgressBar = null
-  @FXML
-  protected var userHealth1: ProgressBar = null
-  @FXML
-  protected var userHealth2: ProgressBar = null
 
   // Set Images
-  val enemyURL1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait
-  val enemyURL2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait
-  val userURL1: String = "/images/back_portrait/" + MainApp.userPokemon1.backportrait
-  val userURL2: String = "/images/back_portrait/" + MainApp.userPokemon2.backportrait
+  val pokemonPortrait1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait
+  val pokemonPortrait2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait
 
-  val enemyPortrait1: Image = new Image(getClass.getResourceAsStream(enemyURL1))
-  val enemyPortrait2: Image = new Image(getClass.getResourceAsStream(enemyURL2))
-  val userPortrait1: Image = new Image(getClass.getResourceAsStream(userURL1))
-  val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
+  val image1: Image = new Image(getClass.getResourceAsStream(pokemonPortrait1))
+  val image2: Image = new Image(getClass.getResourceAsStream(pokemonPortrait2))
 
-  def initialize(): Unit =
-    enemyImage1.image = enemyPortrait1
-    enemyImage2.image = enemyPortrait2
-    userImage1.image = userPortrait1
-    userImage2.image = userPortrait2
+  // Count will allow for story progression
+  var count: Int = 0
 
-    if MainApp.userPokemon1.current_hp <= 0 then
-      userImage1.visible = false
+  var storyDialogue1: String = null
+  var storyDialogue2: String = null
+  var storyDialogue3: String = null
+  var storyDialogue4: String = null
+  var storyDialogue5: String = null
+  var storyDialogue6: String = null
+  var storyDialogue7: String = null
+  var storyDialogue8: String = null
+  var storyDialogue9: String = null
+  var storyDialogue10: String = null
+
+  val pokeball: CatchRate = new CatchRate()
+  val pokemon1Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon1.grade)
+  val pokemon2Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon2.grade)
+
+  if MainApp.postBattle then
+    storyDialogue1 = "The two wild Pokemon have been defeated. They can now be captured safely, thats if you had any Pokeballs on you."
+    storyDialogue2 = "As you turn to leave the forest and go home with your newly acquired partner, you spot a glint in a nearby bush."
+    storyDialogue3 = "You step forward to take a closer look and rather than one glint, you spot two glints in the bush."
+    storyDialogue4 = "You recognize the glints being from two Pokeballs of the same type. What type of Pokeballs, you weren't able to see as the two wild Pokemon start to recover."
+    storyDialogue5 = "You rush to obtain the Pokeballs to catch the weakened Pokemon. You grab, pull out - "
+    storyDialogue6 = "Two " + pokeball.name + "s and throw them at the wild Pokemon"
+    storyDialogue7 = "One"
+    storyDialogue8 = "Two"
+    storyDialogue9 = "Three"
+    if pokemon1Catch && pokemon2Catch then
+      storyDialogue10 = "Congratulations, you have caught " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name()
+    else if pokemon1Catch && !pokemon2Catch then
+      storyDialogue10 = "You have caught " + MainApp.enemyPokemon1.name() + ", but " + MainApp.enemyPokemon2.name() + " broke free and escaped"
+    else if pokemon1Catch && pokemon2Catch then
+      storyDialogue10 = "You have caught " + MainApp.enemyPokemon2.name() + ", but " + MainApp.enemyPokemon1.name() + " broke free and escaped"
+    else if !pokemon1Catch && !pokemon2Catch then
+      storyDialogue10 = "What a shame! Both " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " broke free and escaped"
     end if
-    if MainApp.userPokemon2.current_hp <= 0 then
-      userImage2.visible = false
-    end if
-    if MainApp.enemyPokemon1.current_hp <= 0 then
-      enemyImage1.visible = false
-    end if
-    if MainApp.enemyPokemon2.current_hp <= 0 then
-      enemyImage2.visible = false
+
+  else
+    storyDialogue1 = "Your have been bested by the wild Pokemon and are left defenseless"
+    storyDialogue2 = "The wild Pokemon close in on you to attack, when all of a sudden- "
+    storyDialogue3 = "You blacked out. Unable to accept the fact that you have been beaten in a Pokemon battle."
+    storyDialogue4 = "Good Riddance"
+
+  end if
+
+  var storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7, storyDialogue8, storyDialogue9)
+
+
+  def initialize() =
+    storyLabel.text = storyList(count)
+
+    firstImage.image = image1
+    secondImage.image = image2
+
+  def handleNextDialogue(action: ActionEvent): Unit =
+    count = 1 + count
+    storyLabel.text = storyList(count)
+
+    if !MainApp.postBattle then
+      if count == 3 then
+        finalButton.visible = true
+        finalButton.text = "Game Over"
+        nextButton.visible = false
+      end if
+    else if MainApp.postBattle then
+      if count == 6 then
+        nextButton.visible = false
+        Thread.sleep(2000)
+        count = 1 + count
+        storyLabel.text = storyList(count)
+        Thread.sleep(2000)
+        count = 1 + count
+        storyLabel.text = storyList(count)
+        Thread.sleep(2000)
+        count = 1 + count
+        storyLabel.text = storyList(count)
+        nextButton.visible = true
+      end if
     end if
 
-    enemyName1.text = MainApp.enemyPokemon1.name()
-    enemyName2.text = MainApp.enemyPokemon2.name()
-    userName1.text = MainApp.userPokemon1.name() + ": " + MainApp.userPokemon1.current_hp + "/" + MainApp.userPokemon1.hp
-    userName2.text = MainApp.userPokemon2.name() + ": " + MainApp.userPokemon2.current_hp + "/" + MainApp.userPokemon2.hp
 
-    val enemyHp1: Double = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
-    val enemyHp2: Double = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
-    val userHp1: Double = MainApp.userPokemon1.current_hp / MainApp.userPokemon1.hp
-    val userHp2: Double = MainApp.userPokemon2.current_hp / MainApp.userPokemon2.hp
-
-    enemyHealth1.progress = enemyHp1
-    enemyHealth2.progress = enemyHp2
-    userHealth1.progress = userHp1
-    userHealth2.progress = userHp2
+  def handleFinalButton(action: ActionEvent): Unit =
+    if !MainApp.postBattle then
+      showStartScreen()
+    end if

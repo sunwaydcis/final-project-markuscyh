@@ -4,15 +4,15 @@ import scala.util.Random
 case class Encounter() :
   def randomGrade() : String =
     val grade: Int = Random.nextInt(310) + 1
-    if (grade <= 100) then
+    if grade <= 100 then
       encounterGrade1()
-    else if  (grade <= 180) then
+    else if grade <= 180 then
       encounterGrade2()
-    else if (grade <= 240) then
+    else if grade <= 240 then
       encounterGrade3()
-    else if (grade <= 280) then
+    else if grade <= 280 then
       encounterGrade4()
-    else if (grade <= 309) then
+    else if grade <= 309 then
       encounterGrade5()
     else
       encounterGrade6()

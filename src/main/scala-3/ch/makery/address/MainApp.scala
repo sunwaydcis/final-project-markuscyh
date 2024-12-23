@@ -82,7 +82,7 @@ object MainApp extends JFXApp3:
   end showEnemyBattleScene
 
   def showPostBattleScene(): Unit =
-    val resource = getClass.getResource("view/PostBattleScene.fxml")
+    val resource = getClass.getResource("view/BattleOutcomeScene.fxml")
     val loader = new FXMLLoader(resource)
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
@@ -104,11 +104,10 @@ object MainApp extends JFXApp3:
     while !userAction do
       if userPokemon1.current_hp <= 0 && userPokemon2.current_hp <= 0 then
         showPostBattleScene()
-        println("Success")
+        postBattle = false
         userAction = true
       else if enemyPokemon1.current_hp <= 0 && enemyPokemon2.current_hp <= 0 then
         showPostBattleScene()
-        println("Success")
         userAction = true
       end if
       
@@ -163,6 +162,8 @@ object MainApp extends JFXApp3:
   var userPokemon1: UserPokemon = null
   var userPokemon2: UserPokemon = null
   var attackingPokemon: EnemyPokemon = null
+
+  var postBattle: Boolean = true
 
   
 end MainApp

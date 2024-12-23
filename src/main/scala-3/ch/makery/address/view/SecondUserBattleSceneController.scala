@@ -159,10 +159,14 @@ class SecondUserBattleSceneController():
     moveButton1.visible = false
     moveButton2.visible = false
 
-    targetButton1.visible = true
-    targetButton2.visible = true
-    targetButton1.text = MainApp.enemyPokemon1.name()
-    targetButton2.text = MainApp.enemyPokemon2.name()
+    if MainApp.enemyPokemon1.current_hp > 0 then
+      targetButton1.visible = true
+      targetButton1.text = MainApp.enemyPokemon1.name()
+    end if
+    if MainApp.enemyPokemon2.current_hp > 0 then
+      targetButton2.visible = true
+      targetButton2.text = MainApp.enemyPokemon2.name()
+    end if
 
 
   def move2Action(action: ActionEvent): Unit =
@@ -174,10 +178,14 @@ class SecondUserBattleSceneController():
     moveButton1.visible = false
     moveButton2.visible = false
 
-    targetButton1.visible = true
-    targetButton2.visible = true
-    targetButton1.text = MainApp.enemyPokemon1.name()
-    targetButton2.text = MainApp.enemyPokemon2.name()
+    if MainApp.enemyPokemon1.current_hp > 0 then
+      targetButton1.visible = true
+      targetButton1.text = MainApp.enemyPokemon1.name()
+    end if
+    if MainApp.enemyPokemon2.current_hp > 0 then
+      targetButton2.visible = true
+      targetButton2.text = MainApp.enemyPokemon2.name()
+    end if
 
   def target1Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
@@ -232,10 +240,18 @@ class SecondUserBattleSceneController():
     observeButton.visible = false
     backButton.visible = true
 
-    userButton1.visible = true
-    userButton2.visible = true
-    enemyButton1.visible = true
-    enemyButton2.visible = true
+    if MainApp.userPokemon1.current_hp > 0 then
+      userButton1.visible = true
+    end if
+    if MainApp.userPokemon2.current_hp > 0 then
+      userButton2.visible = true
+    end if
+    if MainApp.enemyPokemon1.current_hp > 0 then
+      enemyButton1.visible = true
+    end if
+    if MainApp.enemyPokemon2.current_hp > 0 then
+      enemyButton2.visible = true
+    end if
 
   def observeEnemy1(action: ActionEvent): Unit =
     storyLabel.text = MainApp.enemyPokemon1.observation()

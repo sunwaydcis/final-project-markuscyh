@@ -158,10 +158,14 @@ class FirstUserBattleSceneController():
     moveButton1.visible = false
     moveButton2.visible = false
 
-    targetButton1.visible = true
-    targetButton2.visible = true
-    targetButton1.text = MainApp.enemyPokemon1.name()
-    targetButton2.text = MainApp.enemyPokemon2.name()
+    if MainApp.enemyPokemon1.current_hp > 0 then
+      targetButton1.visible = true
+      targetButton1.text = MainApp.enemyPokemon1.name()
+    end if
+    if MainApp.enemyPokemon2.current_hp > 0 then
+      targetButton2.visible = true
+      targetButton2.text = MainApp.enemyPokemon2.name()
+    end if
 
 
   def move2Action(action: ActionEvent): Unit =
@@ -173,10 +177,14 @@ class FirstUserBattleSceneController():
     moveButton1.visible = false
     moveButton2.visible = false
 
-    targetButton1.visible = true
-    targetButton2.visible = true
-    targetButton1.text = MainApp.enemyPokemon1.name()
-    targetButton2.text = MainApp.enemyPokemon2.name()
+    if MainApp.enemyPokemon1.current_hp > 0 then
+      targetButton1.visible = true
+      targetButton1.text = MainApp.enemyPokemon1.name()
+    end if
+    if MainApp.enemyPokemon2.current_hp > 0 then
+      targetButton2.visible = true
+      targetButton2.text = MainApp.enemyPokemon2.name()
+    end if
 
   def target1Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
@@ -235,11 +243,14 @@ class FirstUserBattleSceneController():
 
     if MainApp.userPokemon1.current_hp > 0 then
       userButton1.visible = true
-    else if MainApp.userPokemon2.current_hp > 0 then
+    end if
+    if MainApp.userPokemon2.current_hp > 0 then
       userButton2.visible = true
-    else if MainApp.enemyPokemon1.current_hp > 0 then
+    end if
+    if MainApp.enemyPokemon1.current_hp > 0 then
       enemyButton1.visible = true
-    else if MainApp.enemyPokemon2.current_hp > 0 then
+    end if
+    if MainApp.enemyPokemon2.current_hp > 0 then
       enemyButton2.visible = true
     end if
 
