@@ -98,8 +98,12 @@ class BattleOutcomeSceneController:
     userHealth2.progress = userHp2
 
     if !MainApp.postBattle then
+      storyLabel.text = "You have won the battle!"
+      nextButton.text = "Yes!"
+    else
       storyLabel.text = "You have lost the battle!"
-      
+      nextButton.text = "No!"
+    end if
       
   def handleNextDialogue(action: ActionEvent): Unit =
     showPostBattleScene()

@@ -34,6 +34,11 @@
                   <Button fx:id="userButton2" layoutX="226.0" layoutY="297.0" mnemonicParsing="false" onAction="#observeUser2" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
                   <Button fx:id="enemyButton1" layoutX="425.0" layoutY="165.0" mnemonicParsing="false" onAction="#observeEnemy1" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
                   <Button fx:id="enemyButton2" layoutX="580.0" layoutY="165.0" mnemonicParsing="false" onAction="#observeEnemy2" prefHeight="34.0" prefWidth="64.0" text="Observe" visible="false" />
+                  <Rectangle fx:id="movePanel" arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="99.0" layoutX="460.0" layoutY="247.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="239.0" />
+                  <Label fx:id="moveLabel1" alignment="TOP_LEFT" layoutX="474.0" layoutY="257.0" prefHeight="22.0" prefWidth="211.0" text="Move: " visible="false" wrapText="true" AnchorPane.bottomAnchor="68.59999999999997" AnchorPane.leftAnchor="474.0" AnchorPane.rightAnchor="13.200000000000045" AnchorPane.topAnchor="257.0" />
+                  <Label fx:id="moveLabel2" alignment="TOP_LEFT" layoutX="473.0" layoutY="280.0" prefHeight="22.0" prefWidth="211.0" text="Type:" visible="false" wrapText="true" />
+                  <Label fx:id="moveLabel3" alignment="TOP_LEFT" layoutX="473.0" layoutY="300.0" prefHeight="22.0" prefWidth="211.0" text="Category: " visible="false" wrapText="true" />
+                  <Label fx:id="moveLabel4" alignment="TOP_LEFT" layoutX="474.0" layoutY="320.0" prefHeight="22.0" prefWidth="211.0" text="Power:" visible="false" wrapText="true" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

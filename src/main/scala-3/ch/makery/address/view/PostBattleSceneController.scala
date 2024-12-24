@@ -11,10 +11,13 @@ import scalafx.Includes.*
 import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.control.Button
+import javafx.scene.shape.Rectangle
 
 @FXML
 class PostBattleSceneController():
 
+  @FXML
+  protected var black: Rectangle = null
   @FXML
   protected var storyLabel: Label = null
   @FXML
@@ -105,7 +108,11 @@ class PostBattleSceneController():
 
     if !MainApp.postBattle then
 
-      if count == 3 then
+      if count == 2 then
+        black.visible = true
+        firstImage.visible = false
+        secondImage.visible = false
+      else if count == 3 then
         finalButton.visible = true
         finalButton.text = "Game Over"
         nextButton.visible = false

@@ -11,9 +11,14 @@ import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.control.Button
 import javafx.scene.control.ProgressBar
+import javafx.scene.shape.Rectangle
 
 @FXML
-class FirstUserBattleSceneController():
+class FirstUserBattleSceneController:
+
+  //Panel for move information
+  @FXML
+  protected var movePanel: Rectangle = null
 
   //Label for battle dialogue
   @FXML
@@ -26,6 +31,14 @@ class FirstUserBattleSceneController():
   protected var userName1: Label = null
   @FXML
   protected var userName2: Label = null
+  @FXML
+  protected var moveLabel1: Label = null
+  @FXML
+  protected var moveLabel2: Label = null
+  @FXML
+  protected var moveLabel3: Label = null
+  @FXML
+  protected var moveLabel4: Label = null
 
   //Pokemon ImageViews
   @FXML
@@ -157,6 +170,16 @@ class FirstUserBattleSceneController():
 
     moveButton1.visible = false
     moveButton2.visible = false
+    
+    movePanel.visible = true
+    moveLabel1.visible = true
+    moveLabel1.text = "Move: " + MainApp.userPokemon1.move1.name
+    moveLabel2.visible = true
+    moveLabel2.text = "Type: " + MainApp.userPokemon1.move1.move_type.name
+    moveLabel3.visible = true
+    moveLabel3.text = "Category: " + MainApp.userPokemon1.move1.move_category
+    moveLabel4.visible = true
+    moveLabel4.text = "Power: " + MainApp.userPokemon1.move1.power
 
     if MainApp.enemyPokemon1.current_hp > 0 then
       targetButton1.visible = true
@@ -177,6 +200,16 @@ class FirstUserBattleSceneController():
     moveButton1.visible = false
     moveButton2.visible = false
 
+    movePanel.visible = true
+    moveLabel1.visible = true
+    moveLabel1.text = "Move: " + MainApp.userPokemon1.move2.name
+    moveLabel2.visible = true
+    moveLabel2.text = "Type: " + MainApp.userPokemon1.move2.move_type.name
+    moveLabel3.visible = true
+    moveLabel3.text = "Category: " + MainApp.userPokemon1.move2.move_category
+    moveLabel4.visible = true
+    moveLabel4.text = "Power: " + MainApp.userPokemon1.move2.power
+
     if MainApp.enemyPokemon1.current_hp > 0 then
       targetButton1.visible = true
       targetButton1.text = MainApp.enemyPokemon1.name()
@@ -194,12 +227,16 @@ class FirstUserBattleSceneController():
     end if
     
     MainApp.enemyPokemon1.hpChange(damage)
-    damage -= damage*2
 
     targetButton1.visible = false
     targetButton2.visible = false
     backButton.visible = false
     nextButton.visible = true
+    movePanel.visible = false
+    moveLabel1.visible = false
+    moveLabel2.visible = false
+    moveLabel3.visible = false
+    moveLabel4.visible = false
 
     enemyHealth1.progress = MainApp.enemyPokemon1.current_hp / MainApp.enemyPokemon1.hp
     storyLabel.text = MainApp.userPokemon1.name() +" has dealt " + damage + " damage to " + MainApp.enemyPokemon1.name()
@@ -222,6 +259,11 @@ class FirstUserBattleSceneController():
     targetButton2.visible = false
     backButton.visible = false
     nextButton.visible = true
+    movePanel.visible = false
+    moveLabel1.visible = false
+    moveLabel2.visible = false
+    moveLabel3.visible = false
+    moveLabel4.visible = false
 
     enemyHealth2.progress = MainApp.enemyPokemon2.current_hp / MainApp.enemyPokemon2.hp
     storyLabel.text = MainApp.userPokemon1.name() + " has dealt " + damage + " damage to " + MainApp.enemyPokemon2.name()
@@ -311,6 +353,12 @@ class FirstUserBattleSceneController():
       moveButton1.visible = true
       moveButton2.visible = true
 
+      movePanel.visible = false
+      moveLabel1.visible = false
+      moveLabel2.visible = false
+      moveLabel3.visible = false
+      moveLabel4.visible = false
+      
       targetButton1.visible = false
       targetButton2.visible = false
       actionType = "attack"
