@@ -20,7 +20,7 @@ case class Encounter() :
   end randomGrade
 
   def encounterGrade1() : String =
-    var rate = Random.nextInt(8) + 1
+    val rate = Random.nextInt(8) + 1
     rate match
       case 1 => "Caterpie"
       case 2 => "Magikarp"
@@ -33,7 +33,7 @@ case class Encounter() :
     end match
 
   def encounterGrade2(): String =
-    var rate = Random.nextInt(11) + 1
+    val rate = Random.nextInt(11) + 1
     rate match
       case 1 => "Beldum"
       case 2 => "Butterfree"
@@ -49,7 +49,7 @@ case class Encounter() :
     end match
 
   def encounterGrade3(): String =
-    var rate = Random.nextInt(11) + 1
+    val rate = Random.nextInt(11) + 1
     rate match
       case 1 => "Dartrix"
       case 2 => "Dragalge"
@@ -65,7 +65,7 @@ case class Encounter() :
     end match
 
   def encounterGrade4(): String =
-    var rate = Random.nextInt(7) + 1
+    val rate = Random.nextInt(7) + 1
     rate match
       case 1 => "Decidueye"
       case 2 => "Greninja"
@@ -77,14 +77,14 @@ case class Encounter() :
     end match
 
   def encounterGrade5(): String =
-    var rate = Random.nextInt(2) + 1
+    val rate = Random.nextInt(2) + 1
     rate match
       case 1 => "HoOh"
       case 2 => "Lugia"
     end match
 
   def encounterGrade6(): String =
-    var rate = Random.nextInt(1) + 1
+    val rate = Random.nextInt(1) + 1
     rate match
       case 1 => "Arceus"
     end match

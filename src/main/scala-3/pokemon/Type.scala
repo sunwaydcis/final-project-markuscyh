@@ -30,8 +30,7 @@ class Type(_pokemontype: String) :
 
   def pokemontype(): String =
     name
-  
-    
+
   def checkEffectiveness(defendingtype: String, damage: Double) : Double =
     if effective.contains(defendingtype) then
       damage * 2
@@ -42,6 +41,7 @@ class Type(_pokemontype: String) :
     else
       damage
     end if
+
 
   def Normal(): Unit =
     effective = List("Nothing")

@@ -13,7 +13,7 @@ class CatchRate:
   if pokeball_grade <= 150 then
     name = "Pokeball"
     catchrate = 1
-  else if pokeball_grade <= 255 then
+  else if pokeball_grade <= 250 then
     name = "Greatball"
     catchrate = 1.5
   else if pokeball_grade <= 295 then

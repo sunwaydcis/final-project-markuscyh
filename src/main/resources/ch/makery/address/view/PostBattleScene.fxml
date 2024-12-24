@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.SecondSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.PostBattleSceneController">
    <children>
       <SplitPane dividerPositions="0.7008032128514057" layoutX="238.0" layoutY="128.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -21,6 +21,8 @@
                   </ImageView>
                   <ImageView fx:id="firstImage" fitHeight="200.0" fitWidth="200.0" layoutX="111.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="90.0" />
                   <ImageView fx:id="secondImage" fitHeight="200.0" fitWidth="200.0" layoutX="409.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" />
+                  <ImageView fx:id="firstpokeball" fitHeight="36.0" fitWidth="27.0" layoutX="177.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="secondpokeball" fitHeight="36.0" fitWidth="27.0" layoutX="495.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#handleNextDialogue" prefHeight="100.0" prefWidth="160.0">

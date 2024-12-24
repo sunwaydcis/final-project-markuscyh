@@ -27,11 +27,18 @@ object MainApp extends JFXApp3:
     showStartScreen()
 
   def showStartScreen(): Unit =
+    encounter1 = encounterrate.randomGrade()
+    encounter2 = encounterrate.randomGrade()
+    encounter3 = encounterrate.randomGrade()
+    encounter4 = encounterrate.randomGrade()
+    encounter5 = encounterrate.randomGrade()
+
     val resource = getClass.getResource("view/StartScreen.fxml")
     val loader = new FXMLLoader(resource)
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
+  end showStartScreen
 
   def showOpeningScene(): Unit =
     val resource = getClass.getResource("view/OpeningScene.fxml")
@@ -81,8 +88,16 @@ object MainApp extends JFXApp3:
     this.roots.get.center = roots
   end showEnemyBattleScene
 
-  def showPostBattleScene(): Unit =
+  def showBattleOutcomeScene(): Unit =
     val resource = getClass.getResource("view/BattleOutcomeScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showBattleOutcomeScene
+
+  def showPostBattleScene(): Unit =
+    val resource = getClass.getResource("view/PostBattleScene.fxml")
     val loader = new FXMLLoader(resource)
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
@@ -103,11 +118,11 @@ object MainApp extends JFXApp3:
     var userAction: Boolean = false
     while !userAction do
       if userPokemon1.current_hp <= 0 && userPokemon2.current_hp <= 0 then
-        showPostBattleScene()
+        showBattleOutcomeScene()
         postBattle = false
         userAction = true
       else if enemyPokemon1.current_hp <= 0 && enemyPokemon2.current_hp <= 0 then
-        showPostBattleScene()
+        showBattleOutcomeScene()
         userAction = true
       end if
       
@@ -151,11 +166,11 @@ object MainApp extends JFXApp3:
 
   //Pokemon are set
   var encounterrate = new Encounter()
-  var encounter1 = encounterrate.randomGrade()
-  var encounter2 = encounterrate.randomGrade()
-  var encounter3 = encounterrate.randomGrade()
-  var encounter4 = encounterrate.randomGrade()
-  var encounter5 = encounterrate.randomGrade()
+  var encounter1: String = null
+  var encounter2: String = null
+  var encounter3: String = null
+  var encounter4: String = null
+  var encounter5: String = null
 
   var enemyPokemon1: EnemyPokemon = null
   var enemyPokemon2: EnemyPokemon = null
@@ -165,5 +180,4 @@ object MainApp extends JFXApp3:
 
   var postBattle: Boolean = true
 
-  
 end MainApp

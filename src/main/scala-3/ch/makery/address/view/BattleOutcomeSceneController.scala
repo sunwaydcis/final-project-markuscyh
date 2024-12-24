@@ -102,4 +102,4 @@ class BattleOutcomeSceneController:
       
       
   def handleNextDialogue(action: ActionEvent): Unit =
-    null
+    showPostBattleScene()

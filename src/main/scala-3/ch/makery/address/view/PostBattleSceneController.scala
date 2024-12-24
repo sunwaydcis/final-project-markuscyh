@@ -22,20 +22,31 @@ class PostBattleSceneController():
   @FXML
   protected var secondImage: ImageView = null
   @FXML
+  protected var firstpokeball: ImageView = null
+  @FXML
+  protected var secondpokeball: ImageView = null
+  @FXML
   protected var nextButton: Button = null
   @FXML
   protected var finalButton: Button = null
 
 
+  val pokeball: CatchRate = new CatchRate()
+
   // Set Images
   val pokemonPortrait1: String = "/images/front_portrait/" + MainApp.enemyPokemon1.frontportrait
   val pokemonPortrait2: String = "/images/front_portrait/" + MainApp.enemyPokemon2.frontportrait
+  val pokeballPortrait: String = "/images/pokeballs/" + pokeball.name + ".png"
 
   val image1: Image = new Image(getClass.getResourceAsStream(pokemonPortrait1))
   val image2: Image = new Image(getClass.getResourceAsStream(pokemonPortrait2))
+  val pokeballimage: Image = new Image(getClass.getResourceAsStream(pokeballPortrait))
 
   // Count will allow for story progression
   var count: Int = 0
+
+  val pokemon1Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon1.grade)
+  val pokemon2Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon2.grade)
 
   var storyDialogue1: String = null
   var storyDialogue2: String = null
@@ -49,10 +60,6 @@ class PostBattleSceneController():
   var storyDialogue10: String = null
   var storyDialogue11: String = null
   var storyDialogue12: String = "The End"
-
-  val pokeball: CatchRate = new CatchRate()
-  val pokemon1Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon1.grade)
-  val pokemon2Catch: Boolean = pokeball.catchResult(MainApp.enemyPokemon2.grade)
 
   if MainApp.postBattle then
     storyDialogue1 = "The two wild Pokemon have been defeated. They can now be captured safely, thats if you had any Pokeballs on you."
@@ -79,11 +86,11 @@ class PostBattleSceneController():
     storyDialogue1 = "Your have been bested by the wild Pokemon and are left defenseless"
     storyDialogue2 = "The wild Pokemon close in on you to attack, when all of a sudden- "
     storyDialogue3 = "You blacked out. Unable to accept the fact that you have been beaten in a Pokemon battle."
-    storyDialogue4 = "Good Riddance"
+    storyDialogue4 = "Good Riddance you sore loser."
 
   end if
 
-  var storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7, storyDialogue8, storyDialogue9)
+  var storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7, storyDialogue8, storyDialogue9, storyDialogue10, storyDialogue11)
 
 
   def initialize() =
@@ -97,29 +104,44 @@ class PostBattleSceneController():
     storyLabel.text = storyList(count)
 
     if !MainApp.postBattle then
+
       if count == 3 then
         finalButton.visible = true
         finalButton.text = "Game Over"
         nextButton.visible = false
+
       end if
+
     else if MainApp.postBattle then
+
       if count == 6 then
+        firstImage.visible = false
+        secondImage.visible = false
+        firstpokeball.visible = true
+        secondpokeball.visible = true
+        firstpokeball.image = pokeballimage
+        secondpokeball.image = pokeballimage
+
+      else if count == 9 then
+        if !pokemon1Catch then
+          firstImage.visible = true
+          firstpokeball.visible = false
+
+        else if !pokemon2Catch then
+          secondImage.visible = true
+          secondpokeball.visible = false
+
+        end if
+
+      else if count == 10 then
+        finalButton.visible = true
+        finalButton.text = "The End"
         nextButton.visible = false
-        Thread.sleep(2000)
-        count = 1 + count
-        storyLabel.text = storyList(count)
-        Thread.sleep(2000)
-        count = 1 + count
-        storyLabel.text = storyList(count)
-        Thread.sleep(2000)
-        count = 1 + count
-        storyLabel.text = storyList(count)
-        nextButton.visible = true
+
       end if
     end if
+
 
 
   def handleFinalButton(action: ActionEvent): Unit =
-    if !MainApp.postBattle then
       showStartScreen()
-    end if
