@@ -8,6 +8,9 @@ import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene as sfxs
 import scalafx.scene.Scene
+import scalafx.scene.media.Media
+import scalafx.scene.media.MediaPlayer
+import java.nio.file.Paths
 
 object MainApp extends JFXApp3:
 
@@ -46,6 +49,10 @@ object MainApp extends JFXApp3:
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
+    val openingMusic: Media = new Media(Paths.get("src/main/resources/audio/opening_music.mp3").toUri.toString)
+    var mediaPlayer: MediaPlayer = new MediaPlayer(openingMusic)
+    mediaPlayer.volume = 75
+    mediaPlayer.play()
   end showOpeningScene
   
   def showTutorialScene(): Unit =
