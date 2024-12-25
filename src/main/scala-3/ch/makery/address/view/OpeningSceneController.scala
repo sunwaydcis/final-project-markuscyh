@@ -10,6 +10,9 @@ import scalafx.Includes.*
 import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.control.Button
+import scalafx.scene.media.{Media, MediaPlayer}
+
+import java.nio.file.Paths
 
 
 @FXML
@@ -73,6 +76,11 @@ class OpeningSceneController():
     storyLabel.text = storyList(count)
 
     if (count == 3) then
+      MainApp.mediaPlayer.stop()
+      val tenseMusic: Media = new Media(Paths.get("src/main/resources/audio/tense_music.mp3").toUri.toString)
+      MainApp.mediaPlayer = null
+      MainApp.mediaPlayer = new MediaPlayer(tenseMusic)
+      MainApp.mediaPlayer.play()
       firstImage.image = image1
       secondImage.image = image2
       thirdImage.image = image3

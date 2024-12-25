@@ -41,16 +41,21 @@ object MainApp extends JFXApp3:
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
+    val menuMusic: Media = new Media(Paths.get("src/main/resources/audio/menu_music.mp3").toUri.toString)
+    mediaPlayer = new MediaPlayer(menuMusic)
+    mediaPlayer.volume = 75
+    mediaPlayer.play()
   end showStartScreen
 
   def showOpeningScene(): Unit =
+    mediaPlayer.stop()
     val resource = getClass.getResource("view/OpeningScene.fxml")
     val loader = new FXMLLoader(resource)
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
     val openingMusic: Media = new Media(Paths.get("src/main/resources/audio/opening_music.mp3").toUri.toString)
-    var mediaPlayer: MediaPlayer = new MediaPlayer(openingMusic)
+    mediaPlayer = new MediaPlayer(openingMusic)
     mediaPlayer.volume = 75
     mediaPlayer.play()
   end showOpeningScene
@@ -186,5 +191,7 @@ object MainApp extends JFXApp3:
   var attackingPokemon: EnemyPokemon = null
 
   var postBattle: Boolean = true
+
+  var mediaPlayer: MediaPlayer = null
 
 end MainApp

@@ -10,6 +10,9 @@ import scalafx.Includes.*
 import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.control.Button
+import scalafx.scene.media.{Media, MediaPlayer}
+
+import java.nio.file.Paths
 
 @FXML
 class SecondSceneController():
@@ -107,4 +110,8 @@ class SecondSceneController():
     storyLabel.text = storyList(count)
     
   def startBattle(action: ActionEvent): Unit =
+    MainApp.mediaPlayer.stop()
+    val battleMusic: Media = new Media(Paths.get("src/main/resources/audio/battle_music.mp3").toUri.toString)
+    MainApp.mediaPlayer = new MediaPlayer(battleMusic)
+    MainApp.mediaPlayer.play()
     battle()

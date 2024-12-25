@@ -151,4 +151,5 @@ class PostBattleSceneController():
 
 
   def handleFinalButton(action: ActionEvent): Unit =
-      showStartScreen()
+    MainApp.mediaPlayer.stop()
+    showStartScreen()

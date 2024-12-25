@@ -11,6 +11,9 @@ import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 import javafx.scene.control.Button
 import javafx.scene.control.ProgressBar
+import scalafx.scene.media.{Media, MediaPlayer}
+
+import java.nio.file.Paths
 
 
 @FXML
@@ -64,6 +67,7 @@ class BattleOutcomeSceneController:
   val userPortrait2: Image = new Image(getClass.getResourceAsStream(userURL2))
 
   def initialize(): Unit =
+    MainApp.mediaPlayer.stop()
     enemyImage1.image = enemyPortrait1
     enemyImage2.image = enemyPortrait2
     userImage1.image = userPortrait1
@@ -97,12 +101,18 @@ class BattleOutcomeSceneController:
     userHealth1.progress = userHp1
     userHealth2.progress = userHp2
 
-    if !MainApp.postBattle then
-      storyLabel.text = "You have won the battle!"
-      nextButton.text = "Yes!"
-    else
+    if MainApp.userPokemon1.current_hp <= 0 && MainApp.userPokemon2.current_hp <= 0 then
+      val sadMusic: Media = new Media(Paths.get("src/main/resources/audio/sad_music.mp3").toUri.toString)
+      MainApp.mediaPlayer = new MediaPlayer(sadMusic)
+      MainApp.mediaPlayer.play()
       storyLabel.text = "You have lost the battle!"
       nextButton.text = "No!"
+    else if MainApp.enemyPokemon1.current_hp <= 0 && MainApp.enemyPokemon2.current_hp <= 0 then
+      val victoryMusic: Media = new Media(Paths.get("src/main/resources/audio/victory_music.mp3").toUri.toString)
+      MainApp.mediaPlayer = new MediaPlayer(victoryMusic)
+      MainApp.mediaPlayer.play()
+      storyLabel.text = "You have won the battle!"
+      nextButton.text = "Yes!"
     end if
       
   def handleNextDialogue(action: ActionEvent): Unit =
