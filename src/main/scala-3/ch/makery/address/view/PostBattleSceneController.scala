@@ -73,15 +73,19 @@ class PostBattleSceneController():
     if pokemon1Catch && pokemon2Catch then
       storyDialogue10 = "Congratulations, you have caught " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name()
       storyDialogue11 = "With your new companions, you head home with a spring in your step. Today was a good day."
+      MainApp.caught = 2
     else if pokemon1Catch && !pokemon2Catch then
       storyDialogue10 = "You have caught " + MainApp.enemyPokemon1.name() + ", but " + MainApp.enemyPokemon2.name() + " broke free and escaped"
       storyDialogue11 = "Despite one Pokemon escaping you got two new partners in " + MainApp.userPokemon1.name() + " and " + MainApp.enemyPokemon1.name() + " and decide to go home to rest"
-    else if pokemon1Catch && pokemon2Catch then
+      MainApp.caught = 1
+    else if !pokemon1Catch && pokemon2Catch then
       storyDialogue10 = "You have caught " + MainApp.enemyPokemon2.name() + ", but " + MainApp.enemyPokemon1.name() + " broke free and escaped"
       storyDialogue11 = "Despite one Pokemon escaping you got two new partners in " + MainApp.userPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " and decide to go home to rest"
+      MainApp.caught = 1
     else if !pokemon1Catch && !pokemon2Catch then
       storyDialogue10 = "What a shame! Both " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " broke free and escaped"
       storyDialogue11 = "Whatever, you already got yourself one new friend in " + MainApp.userPokemon1.name() + " and head home"
+      MainApp.caught = 0
     end if
 
 
@@ -90,7 +94,7 @@ class PostBattleSceneController():
     storyDialogue2 = "The wild Pokemon close in on you to attack, when all of a sudden- "
     storyDialogue3 = "You blacked out. Unable to accept the fact that you have been beaten in a Pokemon battle."
     storyDialogue4 = "Good Riddance you sore loser."
-
+    MainApp.caught = 0
   end if
 
   var storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7, storyDialogue8, storyDialogue9, storyDialogue10, storyDialogue11)
@@ -151,5 +155,4 @@ class PostBattleSceneController():
 
 
   def handleFinalButton(action: ActionEvent): Unit =
-    MainApp.mediaPlayer.stop()
-    showStartScreen()
+    showScoreScene()

@@ -7,12 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.StartScreenController">
    <children>
-      <Button layoutX="254.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleStartGame" styleClass="background_button" text="Start Game">
+      <Button layoutX="254.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleStartGame" styleClass="background_button" text="Start Game" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="265.0">
          <font>
             <Font name="Pixeloid Sans" size="22.0" />
          </font>
       </Button>
-      <Text layoutX="52.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Play" underline="true" wrappingWidth="596.13671875">
+      <Text layoutX="50.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Play" underline="true" wrappingWidth="596.13671875">
          <font>
             <Font name="Pixeloid Sans" size="24.0" />
          </font>
@@ -57,11 +57,11 @@
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When all of your Pokemon have fainted, you will lose and return to the Start Screen" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When all of your Pokemon have fainted, you will lose" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last but not least, have fun" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Before, returning to the Start Screen, you will be shown your score for the current game" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>

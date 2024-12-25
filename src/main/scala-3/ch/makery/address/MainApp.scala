@@ -115,6 +115,14 @@ object MainApp extends JFXApp3:
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
   end showPostBattleScene
+
+  def showScoreScene(): Unit =
+    val resource = getClass.getResource("view/ScoreScene.fxml")
+    val loader = new FXMLLoader(resource)
+    loader.load()
+    val roots = loader.getRoot[jfxs.layout.AnchorPane]
+    this.roots.get.center = roots
+  end showScoreScene
   
   def setEnemyPokemon(enemy1: String, enemy2: String, user1: String): Unit =
     enemyPokemon1 = new EnemyPokemon(enemy1)
@@ -137,7 +145,7 @@ object MainApp extends JFXApp3:
         showBattleOutcomeScene()
         userAction = true
       end if
-      
+
       if userPokemon1.current_hp > 0 then
         userPokemon1.turnCounterProgress()
       end if
@@ -153,11 +161,13 @@ object MainApp extends JFXApp3:
 
       if userPokemon1.turn_counter == 0 then
         userPokemon1.turnCounterReset()
+        turns += 1
         showFirstUserBattleScene()
         userAction = true
 
       else if userPokemon2.turn_counter <= 0 then
         userPokemon2.turnCounterReset()
+        turns += 1
         showSecondUserBattleScene()
         userAction = true
 
@@ -189,6 +199,9 @@ object MainApp extends JFXApp3:
   var userPokemon1: UserPokemon = null
   var userPokemon2: UserPokemon = null
   var attackingPokemon: EnemyPokemon = null
+
+  var turns: Int = 0
+  var caught: Int = 0
 
   var postBattle: Boolean = true
 

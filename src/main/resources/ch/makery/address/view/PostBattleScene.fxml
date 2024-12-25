@@ -39,7 +39,7 @@
                         <Font name="Pixeloid Sans" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="finalButton" layoutX="300.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleFinalButton" prefHeight="26.0" prefWidth="99.0" text="Game Over" visible="false" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+                  <Button fx:id="finalButton" layoutX="300.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleFinalButton" prefHeight="26.0" prefWidth="99.0" text="Game Over" visible="false" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
                      <font>
                         <Font name="Pixeloid Sans" size="12.0" />
                      </font></Button>
