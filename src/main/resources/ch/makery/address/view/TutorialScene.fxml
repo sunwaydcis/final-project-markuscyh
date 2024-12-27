@@ -2,66 +2,68 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.StartScreenController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="446.0" layoutX="48.0" layoutY="19.0" stroke="WHITE" strokeType="INSIDE" width="610.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="42.0" />
       <Button layoutX="254.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleStartGame" styleClass="background_button" text="Start Game" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="265.0">
          <font>
             <Font name="Pixeloid Sans" size="22.0" />
          </font>
       </Button>
-      <Text layoutX="50.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Play" underline="true" wrappingWidth="596.13671875">
+      <Text layoutX="50.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Play" underline="true" wrappingWidth="596.13671875" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="37.46328125000002">
          <font>
             <Font name="Pixeloid Sans" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="52.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When there is dialogue, click the arrow button to progress." wrappingWidth="564.1328125" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="0.0">
+      <Text layoutX="66.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When there is dialogue, click the arrow button to progress." wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="69.8671875">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When buttons are present, click them to perform an action." wrappingWidth="564.1328125">
+      <Text layoutX="66.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When buttons are present, click them to perform an action." wrappingWidth="564.1328125">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When you encounter the three wild pokemon, click the corrseponding button of the pokemon you want to catch and use against the other two Pokemon" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When you encounter the three wild pokemon, click the corrseponding button of the pokemon you want to catch and use against the other two Pokemon" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="After catching your first Pokemon, you will be given a choice between two other Pokemon that you already have. The Pokemon that wasn't picked will not be on either team" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="After catching your first Pokemon, you will be given a choice between two other Pokemon that you already have. The Pokemon that wasn't picked will not be on either team" textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="During the Pokemon battle, the frequency of Pokemon actions will be determined by their speed." wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="During the Pokemon battle, the frequency of Pokemon actions will be determined by their speed." wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon actions are split between two options: Attack and Observe" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon actions are split between two options: Attack and Observe" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecting Attack will show a Pokemon's moveset. Selecting a move will also provide targets for the move to hit" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecting Attack will show a Pokemon's moveset. Selecting a move will also provide targets for the move to hit" textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecting Observe will allow you to view either the enemy or your Pokemon's stats and types" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecting Observe will allow you to view either the enemy or your Pokemon's stats and types" textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When a Pokemon's HP reaches 0, they will faint and are unable to perform anymore actions." textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When a Pokemon's HP reaches 0, they will faint and are unable to perform anymore actions." textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When all enemy Pokemon have fainted, you will win and have the chance to catch them with a random Pokeball" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When all enemy Pokemon have fainted, you will win and have the chance to catch them with a random Pokeball" textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When all of your Pokemon have fainted, you will lose" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When all of your Pokemon have fainted, you will lose" textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
-      <Text layoutX="52.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Before, returning to the Start Screen, you will be shown your score for the current game" textAlignment="JUSTIFY" wrappingWidth="564.1328125">
+      <Text layoutX="52.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Before, returning to the Start Screen, you will be shown your score for the current game" textAlignment="JUSTIFY" wrappingWidth="564.1328125" AnchorPane.leftAnchor="66.0">
          <font>
             <Font name="Pixeloid Sans" size="12.0" />
          </font></Text>
