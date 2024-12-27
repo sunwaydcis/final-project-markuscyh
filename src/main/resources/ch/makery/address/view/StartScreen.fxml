@@ -22,9 +22,9 @@
             <Image url="@../../../../images/Pokemon_logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="140.0" fitWidth="464.0" layoutX="118.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../images/Ole-Ga_logo.png" />
+            <Image url="@../../../../images/Battle_Simulator_Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="82.0" layoutY="463.0" prefHeight="18.0" prefWidth="536.0" text="Pokemon belongs to Nintendo and GameFreak. I do not own the rights to Pokemon" textAlignment="CENTER" textFill="WHITE">

@@ -2,6 +2,7 @@ package ch.makery.address
 
 import javafx.fxml.FXMLLoader
 import javafx.scene as jfxs
+import javafx.scene.image.Image
 import pokemon.*
 import scalafx.Includes.*
 import scalafx.application.JFXApp3
@@ -24,6 +25,7 @@ object MainApp extends JFXApp3:
 
     stage = new PrimaryStage():
       title = "Pokemon Ole'Ga"
+      icons += new Image(getClass.getResource("/images/Pokeball_logo.png").toExternalForm)
       scene = new Scene():
         root = roots.get
 
@@ -45,6 +47,8 @@ object MainApp extends JFXApp3:
     mediaPlayer = new MediaPlayer(menuMusic)
     mediaPlayer.volume = 75
     mediaPlayer.play()
+    turns = 0
+    caught = 0
   end showStartScreen
 
   def showOpeningScene(): Unit =
@@ -187,7 +191,7 @@ object MainApp extends JFXApp3:
     end while
 
   //Pokemon are set
-  var encounterrate = new Encounter()
+  var encounterrate: Encounter = new Encounter()
   var encounter1: String = null
   var encounter2: String = null
   var encounter3: String = null

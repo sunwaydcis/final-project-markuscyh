@@ -228,7 +228,6 @@ class SecondUserBattleSceneController():
     end if
 
     MainApp.enemyPokemon1.hpChange(damage)
-    damage -= damage*2
 
     targetButton1.visible = false
     targetButton2.visible = false
@@ -254,7 +253,6 @@ class SecondUserBattleSceneController():
       damage = MainApp.userPokemon2.move2Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)
     end if
     MainApp.enemyPokemon2.hpChange(damage)
-    damage -= damage*2
 
     targetButton1.visible = false
     targetButton2.visible = false

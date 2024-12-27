@@ -16,7 +16,7 @@ import java.nio.file.Paths
 
 
 @FXML
-class OpeningSceneController():
+class OpeningSceneController:
 
   @FXML
   protected var storyLabel: Label = null

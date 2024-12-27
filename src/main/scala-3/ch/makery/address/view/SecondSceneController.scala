@@ -91,7 +91,7 @@ class SecondSceneController():
     secondSelect.visible = false
 
     storyDialogue6 = "Alright! With " + MainApp.userPokemon2.name() + " and " + MainApp.userPokemon1.name() + ", you will surely be able to beat your opponents!"
-    storyDialogue7 = "The" + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
+    storyDialogue7 = "The " + MainApp.enemyPokemon1.name() + " and " + MainApp.enemyPokemon2.name() + " attack! Battle Start!"
     storyList = Array(storyDialogue1, storyDialogue2, storyDialogue3, storyDialogue4, storyDialogue5, storyDialogue6, storyDialogue7)
     count = 1 + count
     storyLabel.text = storyList(count)
