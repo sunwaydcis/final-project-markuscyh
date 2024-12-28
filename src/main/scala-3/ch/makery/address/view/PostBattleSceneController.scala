@@ -64,7 +64,7 @@ class PostBattleSceneController():
   var storyDialogue11: String = null
   var storyDialogue12: String = "The End"
 
-  if MainApp.postBattle then
+  if MainApp.enemyPokemon1.current_hp <= 0 && MainApp.enemyPokemon2.current_hp <= 0 then
     storyDialogue1 = "The two wild Pokemon have been defeated. They can now be captured safely, thats if you had any Pokeballs on you."
     storyDialogue2 = "As you turn to leave the forest and go home with your newly acquired partner, you spot a glint in a nearby bush."
     storyDialogue3 = "You step forward to take a closer look and rather than one glint, you spot two glints in the bush."
@@ -110,7 +110,7 @@ class PostBattleSceneController():
     count = 1 + count
     storyLabel.text = storyList(count)
 
-    if !MainApp.postBattle then
+    if MainApp.userPokemon1.current_hp <= 0 && MainApp.userPokemon2.current_hp <= 0 then
 
       if count == 2 then
         black.visible = true
@@ -123,7 +123,7 @@ class PostBattleSceneController():
 
       end if
 
-    else if MainApp.postBattle then
+    else if MainApp.enemyPokemon1.current_hp <= 0 && MainApp.enemyPokemon2.current_hp <= 0 then
 
       if count == 6 then
         firstImage.visible = false
@@ -137,8 +137,9 @@ class PostBattleSceneController():
         if !pokemon1Catch then
           firstImage.visible = true
           firstpokeball.visible = false
-
-        else if !pokemon2Catch then
+        end if
+        
+        if !pokemon2Catch then
           secondImage.visible = true
           secondpokeball.visible = false
 

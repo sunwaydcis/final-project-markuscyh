@@ -143,7 +143,6 @@ object MainApp extends JFXApp3:
     while !userAction do
       if userPokemon1.current_hp <= 0 && userPokemon2.current_hp <= 0 then
         showBattleOutcomeScene()
-        postBattle = false
         userAction = true
       else if enemyPokemon1.current_hp <= 0 && enemyPokemon2.current_hp <= 0 then
         showBattleOutcomeScene()
@@ -206,8 +205,6 @@ object MainApp extends JFXApp3:
 
   var turns: Int = 0
   var caught: Int = 0
-
-  var postBattle: Boolean = true
 
   var mediaPlayer: MediaPlayer = null
 
