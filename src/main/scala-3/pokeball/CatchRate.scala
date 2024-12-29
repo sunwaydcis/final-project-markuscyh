@@ -9,7 +9,7 @@ class CatchRate:
   var catchsuccessthreshold : Double = 0
 
   var pokeball_grade: Int = Random.nextInt(300) + 1
-
+  
   if pokeball_grade <= 150 then
     name = "Pokeball"
     catchrate = 1
@@ -23,7 +23,7 @@ class CatchRate:
     name = "Masterball"
     catchrate = 100
   end if
-
+  
   def catchResult(grade: Int) : Boolean =
     grade match
       case 1 => grade1Catch()
@@ -75,7 +75,7 @@ class CatchRate:
       false
 
   def grade6Catch(): Boolean =
-    catchchance = 2.5 * catchrate
+    catchchance = 1.5 * catchrate
     catchsuccessthreshold = Random.nextInt(100) + 1;
     if (catchchance >= catchsuccessthreshold) then
       true

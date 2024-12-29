@@ -190,7 +190,6 @@ class FirstUserBattleSceneController:
       targetButton2.text = MainApp.enemyPokemon2.name()
     end if
 
-
   def move2Action(action: ActionEvent): Unit =
     storyLabel.text = "Which Pokemon will you target?"
 
@@ -219,6 +218,7 @@ class FirstUserBattleSceneController:
       targetButton2.text = MainApp.enemyPokemon2.name()
     end if
 
+  //target selectiona actions
   def target1Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
       damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)
@@ -244,9 +244,7 @@ class FirstUserBattleSceneController:
     if MainApp.enemyPokemon1.current_hp <= 0 then
       faint = true
       faintTarget = MainApp.enemyPokemon1.name()
-    
-    
-    
+  
   def target2Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
       damage = MainApp.userPokemon1.move1Damage(MainApp.enemyPokemon2.type1.name, MainApp.enemyPokemon2.type2.name, MainApp.enemyPokemon2.defense, MainApp.enemyPokemon2.sp_defense)

@@ -2,6 +2,7 @@ package pokemon
 import scala.util.Random
 
 case class Encounter() :
+  // Selects a random grade
   def randomGrade() : String =
     val grade: Int = Random.nextInt(310) + 1
     if grade <= 100 then
@@ -19,6 +20,7 @@ case class Encounter() :
     end if
   end randomGrade
 
+  //selects a random Pokémon according to the grade.
   def encounterGrade1() : String =
     val rate = Random.nextInt(8) + 1
     rate match

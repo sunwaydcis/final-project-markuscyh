@@ -220,6 +220,7 @@ class SecondUserBattleSceneController():
       targetButton2.text = MainApp.enemyPokemon2.name()
     end if
 
+  //target selectiona actions
   def target1Action(action: ActionEvent): Unit =
     if selectedMove == 1 then
       damage = MainApp.userPokemon2.move1Damage(MainApp.enemyPokemon1.type1.name, MainApp.enemyPokemon1.type2.name, MainApp.enemyPokemon1.defense, MainApp.enemyPokemon1.sp_defense)

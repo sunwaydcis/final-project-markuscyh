@@ -153,7 +153,6 @@ class PostBattleSceneController():
       end if
     end if
 
-
-
+  
   def handleFinalButton(action: ActionEvent): Unit =
     showScoreScene()
